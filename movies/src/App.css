@@ -32,9 +32,6 @@ p {
 img {
   width: 350px;
   cursor: pointer;
-  margin: 25px;
-  margin-top: 0px;
-  margin-bottom: 0px;
 
   border: 3px solid #ffc300;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
@@ -98,7 +95,8 @@ img:hover {
 }
 
 .movieDisplay {
-
+  margin-top: 0px;
+  margin-bottom: 0px;
 
 }
 
