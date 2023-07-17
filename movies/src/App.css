@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  background-color: #282c34;
+
+}
+
+.App {
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+p {
+  color: #ffc300;
+}
