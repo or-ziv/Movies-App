@@ -9,7 +9,10 @@ export default function NavBar() {
                 <Link to={'/'}>
                     <button className="btnsNavbar">Home</button>
                 </Link>
-                <button className="btnsNavbar btnsNavbar2">Top Rated</button>
+                
+                <Link to={'/toprated'}>
+                    <button className="btnsNavbar btnsNavbar2">Top Rated</button>
+                </Link>
             </div>
 
             <input className="inputs" type="text" placeholder="Search a Movie" />
@@ -18,7 +21,7 @@ export default function NavBar() {
                 <Link to={'/signin'}>
                     <button className="btnsNavbar btnsNavbar2">Sign In</button>
                 </Link>
-                
+
                 <Link to={'/signup'}>
                     <button className="btnsNavbar btnsNavbar2">Sign Up</button>
                 </Link>
