@@ -12,12 +12,14 @@ export default function HomePage(props) {
 
     return (
         <div className="homePage flex">
+
             <div className="movieContent" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${props.selectedMovie?.backdrop_path})` }}>
                 <div className="hero flex">
-                    <h1 style={{ color: "white", fontSize: '72px' }}>{props.selectedMovie?.title}</h1>
-                    <p style={{ color: 'white' }}>{props.selectedMovie?.overview ? props.selectedMovie?.overview : null}</p>
+
+                    <h1 className="txtHover" style={{ color: "white", fontSize: '72px' }}>{props.selectedMovie?.title}</h1>
+                    <p className="txtHover" style={{ color: 'white' }}>{props.selectedMovie?.overview ? props.selectedMovie?.overview : null}</p>
                     <br />
-                    <button className="btns">Play Trailer</button>
+                    <button className="btns txtHover">Play Trailer</button>
                 </div>
             </div>
 
@@ -26,7 +28,7 @@ export default function HomePage(props) {
                 <h2 style={{ color: 'white' }}>Up Coming Movies</h2>
                 <UpComingMovies setSelectedMovie={props.setSelectedMovie} />
             </div>
-        
+
         </div>
     );
 }

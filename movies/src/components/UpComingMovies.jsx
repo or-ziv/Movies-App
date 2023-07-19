@@ -1,5 +1,6 @@
 import React from "react";
 import { useGetUpComingMoviesQuery } from '../features/apiSlice';
+import MovieCard from "./MovieCard";
 
 export default function UpComingMovies(props) {
 
@@ -19,15 +20,17 @@ export default function UpComingMovies(props) {
             <div className="upComing">
                 {tenUpComingMovies?.map((movie, index) => {
                     return (
-                        <div className="movieDisplay" key={index} onClick={() => { props.setSelectedMovie(movie); scrollToTop() }}>
-                            <img
-                                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                                alt={movie.title} />
+                        //     <img
+                        //         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        //         alt={movie.title} />
 
-                            <div className="flex" style={{ flexDirection: 'row' }}>
-                            </div>
-                            <br />
+                        //     <div className="flex" style={{ flexDirection: 'row' }}>
+                        //     </div>
+                        //     <br />
+                        <div className="movieDisplay" key={index} onClick={() => { props.setSelectedMovie(movie); scrollToTop() }}>
+                            <MovieCard movie={movie} index={index} />
                         </div>
+
                     )
                 })}
             </div>
