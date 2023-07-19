@@ -1,36 +1,32 @@
-import React from "react";
-import TopTenMovies from "./TopTenMovies";
-import TrailerMovies from "./TrailerMovies";
+import React, { useEffect } from "react";
+import { useGetUpComingMoviesQuery } from '../features/apiSlice';
 import UpComingMovies from "./UpComingMovies";
 
+export default function HomePage(props) {
+    const { data } = useGetUpComingMoviesQuery();
+    const upComingMovies = data?.results;
 
-export default function HomePage() {
-
-
+    useEffect(() => {
+        props.setSelectedMovie(upComingMovies?.[0]);
+    }, [])
 
     return (
-        // <div className="flex">
-
-        <div className="homePage">
-
-            <div className="topMoviesDiv" style={{ overflowX: 'hidden' }}>
-                <h2 style={{ color: 'white' }}>Top 10</h2>
-                <TopTenMovies />
+        <div className="homePage flex">
+            <div className="movieContent" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${props.selectedMovie?.backdrop_path})` }}>
+                <div className="hero flex">
+                    <h1 style={{ color: "white", fontSize: '72px' }}>{props.selectedMovie?.title}</h1>
+                    <p style={{ color: 'white' }}>{props.selectedMovie?.overview ? props.selectedMovie?.overview : null}</p>
+                    <br />
+                    <button className="btns">Play Trailer</button>
+                </div>
             </div>
 
-            <div className="trailerDiv">
-                <h2 style={{ color: 'white' }}>New Trailers</h2>
-                <TrailerMovies />
-            </div>
 
             <div className="upComingMoviesDiv">
-                <h2 style={{ color: 'white' }}>Up Coming</h2>
-                <UpComingMovies />
+                <h2 style={{ color: 'white' }}>Up Coming Movies</h2>
+                <UpComingMovies setSelectedMovie={props.setSelectedMovie} />
             </div>
-
+        
         </div>
-
-
-        // </div>
-    )
+    );
 }

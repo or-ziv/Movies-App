@@ -15,13 +15,10 @@ export default function TrailerMovies() {
     return (
         <div className="movieDisplay">
             {movieSlice?.map((movie, index) => {
-                
-                return (
-                    <div className="movieDisplay" key={index}>
-                        <img style={{width:'auto'}}
-                            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                            alt={movie.title} />
 
+                return (
+                    <div className="movieDisplay" key={index} style={{ backgroundImage: ` ${movie?.backdrop_path}` }}>
+                        {/* <h1 style={{ color: 'white' }}>{movie.title}</h1> */}
                         <div className="flex" style={{ flexDirection: 'row' }}>
                         </div>
                     </div>
@@ -29,6 +26,6 @@ export default function TrailerMovies() {
 
             })}
 
-        </div>
+        </div >
     )
 }
