@@ -39,10 +39,7 @@ function App() {
   }, [users]);
 
 
-
-
   // This is to show some of the movies
-
   useEffect(() => {
     fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=4a8e3679e70d606a9981baa4c0311d38')
       .then(res => res.json())
@@ -51,9 +48,9 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        
       })
   }, [])
+
 
 
 
@@ -68,7 +65,6 @@ function App() {
             <Route path='/toprated' element={<TopRatedMovies />} />
             <Route path='/signin' element={<SignIn users={users} setCurrentUser={setCurrentUser} setNavbarFlag={setNavbarFlag} />} />
             <Route path='/signup' element={<SignUp register={register} />} />
-
 
           </Routes>
         </BrowserRouter>

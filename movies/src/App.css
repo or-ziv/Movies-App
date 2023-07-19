@@ -2,7 +2,6 @@ body {
   margin: 0;
   background-color: #282c34;
   overflow-x: hidden;
-
 }
 
 .App {
@@ -56,18 +55,6 @@ p {
   align-items: center;
 }
 
-img {
-  width: 350px;
-  cursor: pointer;
-
-  border: 3px solid #ffc300;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
-}
-
-img:hover {
-  filter: brightness(85%);
-}
-
 /* ______________________________________________________________________________ */
 
 /* Navbar Component Style */
@@ -115,7 +102,6 @@ img:hover {
   color: #d8a708;
 }
 
-
 /* ______________________________________________________________________________ */
 
 /* Home Page Component Style */
@@ -152,9 +138,6 @@ img:hover {
   padding: 25px;
 }
 
-
-
-
 .topMoviesDiv {
   flex-direction: row;
   gap: 10px;
@@ -164,7 +147,6 @@ img:hover {
   margin-top: 35px;
 }
 
-
 .upComing {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -172,29 +154,19 @@ img:hover {
   gap: 50px;
 }
 
-
-
-
 /* ______________________________________________________________________________ */
 
 /* Top Rated Movies Style */
-
 
 .topRatedMap {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-flow: row;
-  gap: 15px;
+  gap: 50px;
 }
 
 .movieTitle {
-  color: #9da2a9;
-}
-
-.movieDisplay {
-  margin-top: 0px;
-  margin-bottom: 0px;
-
+  color: #b2b6bd;
 }
 
 /* ______________________________________________________________________________ */
@@ -211,5 +183,27 @@ img:hover {
   box-shadow: rgba(0, 0, 0, 0.386) 0px 22px 70px 4px;
 }
 
+/* ______________________________________________________________________________ */
+
+
+
+/* Movie Card Display Style */
+
+.movieDisplay {
+  height: 500px;
+  width: 350px;
+  cursor: pointer;
+
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+  border: 5px solid #373c44;
+  padding: 20px;
+
+  background-position: center;
+  background-size: cover;
+}
+
+.movieDisplay:hover {
+  filter: brightness(85%);
+}
 
 /* ______________________________________________________________________________ */

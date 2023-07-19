@@ -28,7 +28,6 @@ export default function HomePage(props) {
                 <h2 style={{ color: 'white' }}>Up Coming Movies</h2>
                 <UpComingMovies setSelectedMovie={props.setSelectedMovie} />
             </div>
-
         </div>
     );
 }

@@ -20,17 +20,9 @@ export default function UpComingMovies(props) {
             <div className="upComing">
                 {tenUpComingMovies?.map((movie, index) => {
                     return (
-                        //     <img
-                        //         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                        //         alt={movie.title} />
-
-                        //     <div className="flex" style={{ flexDirection: 'row' }}>
-                        //     </div>
-                        //     <br />
-                        <div className="movieDisplay" key={index} onClick={() => { props.setSelectedMovie(movie); scrollToTop() }}>
+                        <div key={index} onClick={() => { props.setSelectedMovie(movie); scrollToTop() }}>
                             <MovieCard movie={movie} index={index} />
                         </div>
-
                     )
                 })}
             </div>
