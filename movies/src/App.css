@@ -1,6 +1,7 @@
 body {
   margin: 0;
   background-color: #282c34;
+  overflow-x: hidden;
 
 }
 
@@ -96,7 +97,7 @@ img:hover {
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  
+
 }
 
 .btnsNavbar:active {
@@ -117,8 +118,64 @@ img:hover {
 
 /* ______________________________________________________________________________ */
 
+/* Home Page Component Style */
+
+.homePage {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "topMoviesDiv topMoviesDiv topMoviesDiv"
+    "trailerDiv upComingMoviesDiv upComingMoviesDiv"
+    "trailerDiv upComingMoviesDiv upComingMoviesDiv";
+  gap: 50px;
+  max-width: 1500px;
+  margin: 0 auto;
+  text-align: center;
+
+}
+
+.trailerDiv,
+.upComingMoviesDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.topMoviesDiv {
+  grid-area: topMoviesDiv;
+  flex-direction: row;
+  gap: 10px;
+
+  width: 1500px;
+  overflow-x: scroll;
+  margin-top: 35px;
+
+}
+
+.trailerDiv {
+  grid-area: trailerDiv;
+}
+
+.upComingMoviesDiv {
+  grid-area: upComingMoviesDiv;
+}
+
+.upComing {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: row;
+  gap: 15px;
+}
+
+
+
+
+/* ______________________________________________________________________________ */
+
 /* Top Rated Movies Style */
-.topRatedMovies {}
 
 
 .topRatedMap {
@@ -151,9 +208,6 @@ img:hover {
   margin-top: 75px;
   box-shadow: rgba(0, 0, 0, 0.386) 0px 22px 70px 4px;
 }
-
-
-
 
 
 /* ______________________________________________________________________________ */
