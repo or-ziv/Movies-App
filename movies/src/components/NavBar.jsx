@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function NavBar() {
+export default function NavBar(props) {
     return (
         <div className="navbar flex">
 
@@ -9,7 +9,7 @@ export default function NavBar() {
                 <Link to={'/'}>
                     <button className="btnsNavbar">Home</button>
                 </Link>
-                
+
                 <Link to={'/toprated'}>
                     <button className="btnsNavbar btnsNavbar2">Top Rated</button>
                 </Link>
@@ -17,16 +17,32 @@ export default function NavBar() {
 
             <input className="inputs" type="text" placeholder="Search a Movie" />
 
-            <div>
-                <Link to={'/signin'}>
-                    <button className="btnsNavbar btnsNavbar2">Sign In</button>
-                </Link>
+            <div >
+                {!props.navbarFlag ? (
+                    <>
+                        <Link to={'/signin'}>
+                            <button className="btnsNavbar btnsNavbar2">Sign In</button>
+                        </Link>
 
-                <Link to={'/signup'}>
-                    <button className="btnsNavbar btnsNavbar2">Sign Up</button>
-                </Link>
+                        <Link to={'/signup'}>
+                            <button className="btnsNavbar btnsNavbar2">Sign Up</button>
+                        </Link>
+                    </>
+                ) : (
+                    <>
+                        <Link to={'/'}>
+                            <button className="btnsNavbar btnsNavbar2">Favorites</button>
+                        </Link>
 
+                        <Link to={'/'}>
+                            <button className="btnsNavbar btnsNavbar2">Log Out</button>
+                        </Link>
+                    </>
+                )}
             </div>
+
         </div>
     )
 }
+
+

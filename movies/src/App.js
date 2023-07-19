@@ -13,6 +13,7 @@ import SignUp from './components/SignUp';
 
 function App() {
 
+
   const [users, setUsers] = useState(() => {
     let usersFromStorage = localStorage.getItem('users');
     if (usersFromStorage !== null && usersFromStorage !== undefined) {
@@ -25,6 +26,9 @@ function App() {
     const newUser = { userName, email, password, favorites: [] };
     setUsers([newUser, ...users]);
   }
+
+  const [navbarFlag, setNavbarFlag] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
 
 
@@ -40,12 +44,12 @@ function App() {
     <div className="App">
       <ApiProvider api={moviesApi}>
         <BrowserRouter>
-          <NavBar />
+          <NavBar navbarFlag={navbarFlag} />
           <Routes>
 
             <Route path='/' element={<HomePage />} />
             <Route path='/toprated' element={<TopRatedMovies />} />
-            <Route path='/signin' element={<SignIn users={users} />} />
+            <Route path='/signin' element={<SignIn users={users} setCurrentUser={setCurrentUser} setNavbarFlag={setNavbarFlag} />} />
             <Route path='/signup' element={<SignUp register={register} />} />
 
 
