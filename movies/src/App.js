@@ -42,21 +42,20 @@ function App() {
 
 
   // This is to show some of the movies
-  // const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
 
-  // useEffect(() => {
-  //   fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=4a8e3679e70d606a9981baa4c0311d38')
-  //     .then(res => res.json())
-  //     .then((data) => {
-  //       setNowPlayingMovies(data.results);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     })
-  // }, [])
+  useEffect(() => {
+    fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=4a8e3679e70d606a9981baa4c0311d38')
+      .then(res => res.json())
+      .then((data) => {
+        setSelectedMovie(data.results[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+        
+      })
+  }, [])
 
 
-  console.log(selectedMovie);
 
   return (
     <div className="App">
