@@ -15,17 +15,35 @@ import SignUp from './components/SignUp';
 function App() {
 
   // This is to show some of the movies
-  useEffect(() => {
-    fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=4a8e3679e70d606a9981baa4c0311d38')
+  const fetchMovies = (searchKey) => {
+    const API_URL = 'https://api.themoviedb.org/3';
+    const type = searchKey ? 'search/movie' : 'movie/now_playing';
+    const apiKey = '4a8e3679e70d606a9981baa4c0311d38';
+    let url = `${API_URL}/${type}?language=en-US&page=1&api_key=${apiKey}`;
+
+    if (searchKey) {
+      url += `&query=${searchKey}`;
+    }
+
+    fetch(url)
       .then(res => res.json())
       .then((data) => {
-        setSelectedMovie(data.results[0]);
+        if (data.results && data.results.length > 0) {
+          if (searchKey) {
+            setSelectedMovie(data.results[0]);
+            setSearchedMovies(data.results);
+          } else {
+            setSelectedMovie(data.results[0]);
+          }
+        } else {
+          console.log("No search results found.");
+          setSearchedMovies([]);
+        }
       })
       .catch((err) => {
         console.log(err);
-      })
-  }, [])
-
+      });
+  };
 
   // Catch users from the localStorage so the array won't reset
   const [users, setUsers] = useState(() => {
@@ -67,8 +85,6 @@ function App() {
     return {};
   });
 
-
-
   const [selectedMovie, setSelectedMovie] = useState({});
 
   useEffect(() => {
@@ -86,16 +102,36 @@ function App() {
   }
 
 
+  const [searchKey, setSearchKey] = useState('');
+  const [searchedMovies, setSearchedMovies] = useState('');
+
+
+  const searchMovies = (e) => {
+    e.preventDefault();
+    fetchMovies(searchKey);
+  };
+
+  useEffect(() => {
+    fetchMovies();
+  }, []);
+
 
 
   return (
     <div className="App">
       <ApiProvider api={moviesApi}>
         <BrowserRouter>
-          <NavBar navbarFlag={navbarFlag} logOut={logOut} />
-          <Routes>
+          <NavBar
+            navbarFlag={navbarFlag}
+            logOut={logOut}
+            setSearchKey={setSearchKey}
+            searchMovies={searchMovies}
+            searchKey={searchKey}
+            setSearchedMovies={setSearchedMovies}
+          />
+          < Routes >
 
-            <Route path='/' element={<HomePage setSelectedMovie={setSelectedMovie} selectedMovie={selectedMovie} />} />
+            <Route path='/' element={<HomePage setSelectedMovie={setSelectedMovie} selectedMovie={selectedMovie} searchedMovies={searchedMovies} />} />
             <Route path='/toprated' element={<TopRatedMovies />} />
 
             <Route path='/signin'
@@ -106,7 +142,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </ApiProvider>
-    </div>
+    </div >
   );
 }
 

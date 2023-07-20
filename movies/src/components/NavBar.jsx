@@ -3,13 +3,17 @@ import { Link } from "react-router-dom";
 
 export default function NavBar(props) {
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        props.searchMovies(e);
+    }
 
 
     return (
         <div className="navbar flex">
             <div>
                 <Link to={'/'}>
-                    <button className="btnsNavbar">Home</button>
+                    <button onClick={() => { props.setSearchedMovies('') }} className="btnsNavbar">Home</button>
                 </Link>
 
                 <Link to={'/toprated'}>
@@ -17,7 +21,15 @@ export default function NavBar(props) {
                 </Link>
             </div>
 
-            <input className="inputs" type="text" placeholder="Search a Movie" />
+            <form>
+                <input
+                    className="inputs" type="text"
+                    placeholder="Search a Movie"
+                    onChange={(e) => { props.setSearchKey(e.target.value) }}
+                    value={props.searchKey}
+                />
+                <input type="submit" onClick={handleSubmit} style={{ display: 'none' }} />
+            </form>
 
             <div >
                 {!props.navbarFlag ? (

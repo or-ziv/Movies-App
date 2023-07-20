@@ -164,7 +164,6 @@ p {
   grid-auto-flow: row;
   gap: 50px;
 }
-
 .movieTitle {
   color: #b2b6bd;
 }
@@ -188,6 +187,7 @@ p {
 
 
 /* Movie Card Display Style */
+
 
 .movieDisplay {
   height: 500px;
