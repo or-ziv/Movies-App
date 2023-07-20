@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 
 export default function SignIn(props) {
 
@@ -27,6 +27,8 @@ export default function SignIn(props) {
 
         props.setCurrentUser(thisUser[0]);
         props.setNavbarFlag(true);
+        localStorage.setItem('isLoggedIn', JSON.stringify(true));
+        localStorage.setItem('currentUser', JSON.stringify(thisUser[0]));
         nav('/');
 
     }
