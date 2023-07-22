@@ -44,7 +44,7 @@ export default function NavBar(props) {
                     </>
                 ) : (
                     <>
-                        <Link to={'/'}>
+                        <Link to={`/favorites`}>
                             <button className="btnsNavbar btnsNavbar2">Favorites</button>
                         </Link>
 

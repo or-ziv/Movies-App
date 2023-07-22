@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function SignIn(props) {
 
@@ -17,20 +17,19 @@ export default function SignIn(props) {
             return;
         }
 
-        const thisUser = allUsers.filter((val) => (
+        const thisUser = allUsers.find((val) => (
             val.email === email && val.password === password));
 
-        if (thisUser === null || thisUser === []) {
+        if (!thisUser) {
             setErrorP('Inavlid Email Or Password.');
             return;
         }
 
-        props.setCurrentUser(thisUser[0]);
+        props.setCurrentUser(thisUser);
         props.setNavbarFlag(true);
         localStorage.setItem('isLoggedIn', JSON.stringify(true));
-        localStorage.setItem('currentUser', JSON.stringify(thisUser[0]));
+        localStorage.setItem('currentUser', JSON.stringify(thisUser));
         nav('/');
-
     }
 
 

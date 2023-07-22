@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useGetUpComingMoviesQuery } from "../features/apiSlice";
+import { useNavigate } from "react-router-dom";
 import RenderMovies from "./RenderMovies";
 
 export default function HomePage(props) {
+    const nav = useNavigate();
     const { data } = useGetUpComingMoviesQuery();
     const upComingMovies = data?.results;
 
@@ -12,6 +14,8 @@ export default function HomePage(props) {
         setSelectedMovie(upComingMovies?.[0]);
     }, [upComingMovies]);
 
+
+    console.log(selectedMovie);
 
     return (
         <div className="homePage flex">
@@ -25,7 +29,7 @@ export default function HomePage(props) {
                     <h1 className="txtHover" style={{ color: "white", fontSize: "72px" }}>
                         {selectedMovie?.title}
                     </h1>
-                    <p className="txtHover" style={{ color: "white" }}>
+                    <p className="txtHover" style={{ color: "white" ,width:'1000px'}}>
                         {selectedMovie?.overview ? selectedMovie?.overview : null}
                     </p>
                     <br />
@@ -38,8 +42,9 @@ export default function HomePage(props) {
                     <>
                         <h2 style={{ color: "white" }}>Upcoming Movies</h2>
                         <RenderMovies
-                            upComingMovies={upComingMovies}
                             setSelectedMovie={setSelectedMovie}
+                            upComingMovies={upComingMovies}
+                            // setSelectedMovieForDetails={props.setSelectedMovie}
                         />
                     </>
 
@@ -48,7 +53,7 @@ export default function HomePage(props) {
                         <h2 style={{ color: "white" }}>Movies Found</h2>
                         <RenderMovies
                             upComingMovies={props.searchedMovies}
-                            setSelectedMovie={setSelectedMovie}
+                            setSelectedMovie={props.setSelectedMovie}
                         />
                     </>
                 )}

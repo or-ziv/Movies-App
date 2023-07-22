@@ -10,6 +10,8 @@ import HomePage from './components/HomePage';
 import TopRatedMovies from './components/TopRatedMovies';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import Favorites from './components/Favorites';
+import MovieDetails from './components/MovieDetails';
 
 
 function App() {
@@ -84,7 +86,6 @@ function App() {
     }
     return {};
   });
-
   const [selectedMovie, setSelectedMovie] = useState({});
 
   useEffect(() => {
@@ -116,7 +117,6 @@ function App() {
   }, []);
 
 
-
   return (
     <div className="App">
       <ApiProvider api={moviesApi}>
@@ -128,6 +128,7 @@ function App() {
             searchMovies={searchMovies}
             searchKey={searchKey}
             setSearchedMovies={setSearchedMovies}
+            currentUser={currentUser}
           />
           < Routes >
 
@@ -138,6 +139,9 @@ function App() {
               element={<SignIn users={users} setCurrentUser={setCurrentUser} setNavbarFlag={setNavbarFlag} navbarFlag={navbarFlag} />}
             />
             <Route path='/signup' element={<SignUp register={register} />} />
+            <Route path='/favorites' element={<Favorites />} />
+
+            <Route path='/details' element={<MovieDetails selectedMovie={selectedMovie} />} />
 
           </Routes>
         </BrowserRouter>

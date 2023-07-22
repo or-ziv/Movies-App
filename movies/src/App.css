@@ -63,6 +63,9 @@ p {
   background-color: #373c44;
   flex-direction: row;
   justify-content: space-around;
+  border-bottom: 3px solid #4f5155;
+  /* border-top: none; */
+  border-radius: 5px;
 
   position: sticky;
   z-index: 1;
@@ -164,6 +167,7 @@ p {
   grid-auto-flow: row;
   gap: 50px;
 }
+
 .movieTitle {
   color: #b2b6bd;
 }
@@ -188,7 +192,6 @@ p {
 
 /* Movie Card Display Style */
 
-
 .movieDisplay {
   height: 500px;
   width: 350px;
@@ -204,6 +207,31 @@ p {
 
 .movieDisplay:hover {
   filter: brightness(85%);
+
+}
+
+.cardBtn {
+  height: 45px;
+  width: 135px;
+  text-align: center;
+  color: #fff;
+  background-color: #222;
+  border-radius: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
+/* ______________________________________________________________________________ */
+
+
+
+/* Movie Details Style */
+.movieDetailsImages {
+  flex-direction: row;
+  gap: 50px;
+  
 }
 
 /* ______________________________________________________________________________ */
