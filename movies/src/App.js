@@ -70,7 +70,6 @@ function App() {
       return JSON.parse(navbarFlagFromStorage);
     }
     return false;
-
   });
 
 
