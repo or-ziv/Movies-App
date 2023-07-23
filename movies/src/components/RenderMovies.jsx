@@ -12,8 +12,12 @@ export default function RenderMovies(props) {
         <div>
             <div className="upComing">
                 {tenUpComingMovies?.map((movie) => (
-                    <div key={movie.id} onClick={() => { props.setSelectedMovie(movie); scrollToTop(); }}>
-                        <MovieCard movie={movie} selectedMovie={props.selectedMovie} setSelectedMovie={props.setSelectedMovie} />
+                    <div key={movie.id} onClick={() => { props.setHeroMovie(movie); scrollToTop(); }}>
+                        <MovieCard
+                            movie={movie}
+                            selectedMovie={props.selectedMovie}
+                            setSelectedMovie={props.setSelectedMovie}
+                        />
                     </div>
                 ))}
             </div>

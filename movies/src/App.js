@@ -12,6 +12,7 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import Favorites from './components/Favorites';
 import MovieDetails from './components/MovieDetails';
+import Actors from './components/Actors';
 
 
 function App() {
@@ -142,6 +143,8 @@ function App() {
             <Route path='/favorites' element={<Favorites />} />
 
             <Route path='/details' element={<MovieDetails selectedMovie={selectedMovie} />} />
+            <Route path='/actors' element={<Actors />} />
+
 
           </Routes>
         </BrowserRouter>

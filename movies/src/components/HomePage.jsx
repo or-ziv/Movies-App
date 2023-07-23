@@ -1,36 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { useGetUpComingMoviesQuery } from "../features/apiSlice";
-import { useNavigate } from "react-router-dom";
 import RenderMovies from "./RenderMovies";
 
 export default function HomePage(props) {
-    const nav = useNavigate();
     const { data } = useGetUpComingMoviesQuery();
     const upComingMovies = data?.results;
 
-    const [selectedMovie, setSelectedMovie] = useState({});
+    const [heroMovie, setHeroMovie] = useState({});
 
     useEffect(() => {
-        setSelectedMovie(upComingMovies?.[0]);
+        setHeroMovie(upComingMovies?.[0]);
     }, [upComingMovies]);
 
-
-    console.log(selectedMovie);
 
     return (
         <div className="homePage flex">
             <div
                 className="movieContent"
                 style={{
-                    backgroundImage: `url(https://image.tmdb.org/t/p/original${selectedMovie?.backdrop_path})`,
+                    backgroundImage: `url(https://image.tmdb.org/t/p/original${heroMovie?.backdrop_path})`,
                 }}
             >
                 <div className="hero flex">
                     <h1 className="txtHover" style={{ color: "white", fontSize: "72px" }}>
-                        {selectedMovie?.title}
+                        {heroMovie?.title}
                     </h1>
-                    <p className="txtHover" style={{ color: "white" ,width:'1000px'}}>
-                        {selectedMovie?.overview ? selectedMovie?.overview : null}
+                    <p className="txtHover" style={{ color: "white", width: '1000px' }}>
+                        {heroMovie?.overview ? heroMovie?.overview : null}
                     </p>
                     <br />
                     <button className="btns txtHover">Play Trailer</button>
@@ -42,9 +38,9 @@ export default function HomePage(props) {
                     <>
                         <h2 style={{ color: "white" }}>Upcoming Movies</h2>
                         <RenderMovies
-                            setSelectedMovie={setSelectedMovie}
+                            setHeroMovie={setHeroMovie}
                             upComingMovies={upComingMovies}
-                            // setSelectedMovieForDetails={props.setSelectedMovie}
+                            setSelectedMovie={props.setSelectedMovie}
                         />
                     </>
 
@@ -54,6 +50,7 @@ export default function HomePage(props) {
                         <RenderMovies
                             upComingMovies={props.searchedMovies}
                             setSelectedMovie={props.setSelectedMovie}
+                            setHeroMovie={setHeroMovie}
                         />
                     </>
                 )}

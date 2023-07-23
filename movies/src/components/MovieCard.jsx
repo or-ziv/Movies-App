@@ -3,7 +3,7 @@ import starIcon from '../icons/starIcon.png'
 import React, { useState } from "react";
 
 
-export default function MovieCard({ movie, setSelectedMovie, selectedMovie }) {
+export default function MovieCard({ movie, setSelectedMovie }) {
 
     const [isHovering, setIsHovering] = useState(false);
 
@@ -27,7 +27,7 @@ export default function MovieCard({ movie, setSelectedMovie, selectedMovie }) {
                 {isHovering ? (
                     <div className="flex" style={{ flexDirection: 'row', gap: '25%', filter: 'brightness(100%)' }}>
                         <Link to={'/details'}>
-                            <button onClick={() => { setSelectedMovie(selectedMovie) }} className="btns cardBtn">More Details</button>
+                            <button onClick={() => { setSelectedMovie(movie) }} className="btns cardBtn">More Details</button>
                         </Link>
                         <button className="btns cardBtn">Add To Favorite</button>
                     </div>
