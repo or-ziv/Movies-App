@@ -13,11 +13,11 @@ export default function NavBar(props) {
         <div className="navbar flex">
             <div>
                 <Link to={'/'}>
-                    <button onClick={() => { props.setSearchedMovies('') }} className="btnsNavbar">Home</button>
+                    <button onClick={() => { props.setSearchedMovies('') }} className="btnsNavbar btnAnimation">Home</button>
                 </Link>
 
                 <Link to={'/toprated'}>
-                    <button className="btnsNavbar btnsNavbar2">Top Rated</button>
+                    <button className="btnsNavbar btnsNavbar2 btnAnimation">Top Rated</button>
                 </Link>
             </div>
 
@@ -35,21 +35,21 @@ export default function NavBar(props) {
                 {!props.navbarFlag ? (
                     <>
                         <Link to={'/signin'}>
-                            <button className="btnsNavbar btnsNavbar2">Sign In</button>
+                            <button className="btnsNavbar btnsNavbar2 btnAnimation">Sign In</button>
                         </Link>
 
                         <Link to={'/signup'}>
-                            <button className="btnsNavbar btnsNavbar2">Sign Up</button>
+                            <button className="btnsNavbar btnsNavbar2 btnAnimation">Sign Up</button>
                         </Link>
                     </>
                 ) : (
                     <>
                         <Link to={`/favorites`}>
-                            <button className="btnsNavbar btnsNavbar2">Favorites</button>
+                            <button className="btnsNavbar btnsNavbar2 btnAnimation">Favorites</button>
                         </Link>
 
                         <Link to={'/'}>
-                            <button onClick={() => { props.logOut() }} className="btnsNavbar btnsNavbar2">Log Out</button>
+                            <button onClick={() => { props.logOut() }} className="btnsNavbar btnsNavbar2 btnAnimation">Log Out</button>
                         </Link>
                     </>
                 )}

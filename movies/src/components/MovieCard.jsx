@@ -27,9 +27,9 @@ export default function MovieCard({ movie, setSelectedMovie }) {
                 {isHovering ? (
                     <div className="flex" style={{ flexDirection: 'row', gap: '25%', filter: 'brightness(100%)' }}>
                         <Link to={'/details'}>
-                            <button onClick={() => { setSelectedMovie(movie) }} className="btns cardBtn">More Details</button>
+                            <button onClick={() => { setSelectedMovie(movie) }} className="btns cardBtn btnAnimation">More Details</button>
                         </Link>
-                        <button className="btns cardBtn">Add To Favorite</button>
+                        <button className="btn cardBtn btnAnimation">Add To Favorite</button>
                     </div>
                 ) : (
                     <>

@@ -45,7 +45,7 @@ export default function SignIn(props) {
                 <br />
                 <input onChange={(e) => { setPassword(e.target.value) }} className="inputs " type="password" placeholder="Enter Your Password..." />
                 <br />
-                <button onClick={handleLogin} className="btns margin">Login</button>
+                <button onClick={handleLogin} className="btns margin btnAnimation btnsNavbar" style={{ width: '150px' }}>Login</button>
 
                 <br />
             </div>
