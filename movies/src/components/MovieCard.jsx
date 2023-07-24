@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import starIcon from '../icons/starIcon.png'
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import AllData from "../ContextApi";
 
 
-export default function MovieCard({ movie, setSelectedMovie }) {
+export default function MovieCard({ movie }) {
+    const { selectedMovie, setSelectedMovie } = useContext(AllData);
 
     const [isHovering, setIsHovering] = useState(false);
 

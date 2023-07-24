@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
+import AllData from "../ContextApi";
 import { useGetUpComingMoviesQuery } from "../features/apiSlice";
 import RenderMovies from "./RenderMovies";
 
@@ -6,12 +7,12 @@ export default function HomePage(props) {
     const { data } = useGetUpComingMoviesQuery();
     const upComingMovies = data?.results;
 
-    const [heroMovie, setHeroMovie] = useState({});
+    const { heroMovie, setHeroMovie } = useContext(AllData);
+
 
     useEffect(() => {
         setHeroMovie(upComingMovies?.[0]);
     }, [upComingMovies]);
-
 
     return (
         <div className="homePage flex">
@@ -38,9 +39,7 @@ export default function HomePage(props) {
                     <>
                         <h2 style={{ color: "white" }}>Upcoming Movies</h2>
                         <RenderMovies
-                            setHeroMovie={setHeroMovie}
                             upComingMovies={upComingMovies}
-                            setSelectedMovie={props.setSelectedMovie}
                         />
                     </>
 
@@ -48,9 +47,7 @@ export default function HomePage(props) {
                     <>
                         <h2 style={{ color: "white" }}>Movies Found</h2>
                         <RenderMovies
-                            setHeroMovie={setHeroMovie}
                             upComingMovies={props.searchedMovies}
-                            setSelectedMovie={props.setSelectedMovie}
                         />
                     </>
                 )}

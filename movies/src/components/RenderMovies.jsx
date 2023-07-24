@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import AllData from "../ContextApi";
 import MovieCard from "./MovieCard";
 
 export default function RenderMovies(props) {
+
+    const { setHeroMovie } = useContext(AllData);
+
     const tenUpComingMovies = props.upComingMovies?.slice(0, 16);
 
     const scrollToTop = () => {
@@ -10,13 +14,12 @@ export default function RenderMovies(props) {
 
     return (
         <div>
+
             <div className="upComing">
                 {tenUpComingMovies?.map((movie) => (
-                    <div key={movie.id} onClick={() => { props.setHeroMovie(movie); scrollToTop(); }}>
+                    <div key={movie.id} onClick={() => { setHeroMovie(movie); scrollToTop(); }}>
                         <MovieCard
                             movie={movie}
-                            selectedMovie={props.selectedMovie}
-                            setSelectedMovie={props.setSelectedMovie}
                         />
                     </div>
                 ))}

@@ -2,7 +2,8 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ApiProvider } from '@reduxjs/toolkit/query/react';
 import { moviesApi } from './features/apiSlice';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import AllData, { DataProvider } from './ContextApi';
 
 
 import NavBar from './components/NavBar';
@@ -16,6 +17,9 @@ import Actors from './components/Actors';
 
 
 function App() {
+
+  const { setSelectedMovie, users } = useContext(AllData);
+
 
   // This is to show some of the movies
   const fetchMovies = (searchKey) => {
@@ -48,20 +52,6 @@ function App() {
       });
   };
 
-  // Catch users from the localStorage so the array won't reset
-  const [users, setUsers] = useState(() => {
-    let usersFromStorage = localStorage.getItem('users');
-    if (usersFromStorage !== null && usersFromStorage !== undefined) {
-      return JSON.parse(usersFromStorage);
-    }
-    return [];
-  });
-
-  // Register as a new user
-  const register = (userName, email, password) => {
-    const newUser = { userName, email, password, favorites: [] };
-    setUsers([newUser, ...users]);
-  }
 
   // Checkes Wheter the user is logged in or not
   const [navbarFlag, setNavbarFlag] = useState(() => {
@@ -86,11 +76,6 @@ function App() {
     }
     return {};
   });
-  const [selectedMovie, setSelectedMovie] = useState({});
-
-  useEffect(() => {
-    localStorage.setItem('users', JSON.stringify(users));
-  }, [users]);
 
 
   // User can log out, updating the states and local storage
@@ -102,10 +87,9 @@ function App() {
     localStorage.setItem('currentUser', JSON.stringify({}));
   }
 
-
+  
   const [searchKey, setSearchKey] = useState('');
   const [searchedMovies, setSearchedMovies] = useState('');
-
 
   const searchMovies = (e) => {
     e.preventDefault();
@@ -119,35 +103,36 @@ function App() {
 
   return (
     <div className="App">
-      <ApiProvider api={moviesApi}>
-        <BrowserRouter>
-          <NavBar
-            navbarFlag={navbarFlag}
-            logOut={logOut}
-            setSearchKey={setSearchKey}
-            searchMovies={searchMovies}
-            searchKey={searchKey}
-            setSearchedMovies={setSearchedMovies}
-            currentUser={currentUser}
-          />
-          < Routes >
-
-            <Route path='/' element={<HomePage setSelectedMovie={setSelectedMovie} selectedMovie={selectedMovie} searchedMovies={searchedMovies} />} />
-            <Route path='/toprated' element={<TopRatedMovies setSelectedMovie={setSelectedMovie} />} />
-
-            <Route path='/signin'
-              element={<SignIn users={users} setCurrentUser={setCurrentUser} setNavbarFlag={setNavbarFlag} navbarFlag={navbarFlag} />}
+      <DataProvider>
+        <ApiProvider api={moviesApi}>
+          <BrowserRouter>
+            <NavBar
+              navbarFlag={navbarFlag}
+              logOut={logOut}
+              setSearchKey={setSearchKey}
+              searchMovies={searchMovies}
+              searchKey={searchKey}
+              setSearchedMovies={setSearchedMovies}
+              currentUser={currentUser}
             />
-            <Route path='/signup' element={<SignUp register={register} />} />
-            <Route path='/favorites' element={<Favorites />} />
+            < Routes >
 
-            <Route path='/details' element={<MovieDetails selectedMovie={selectedMovie} />} />
-            <Route path='/actors' element={<Actors />} />
+              <Route path='/' element={<HomePage searchedMovies={searchedMovies} />} />
+              <Route path='/toprated' element={<TopRatedMovies />} />
 
+              <Route path='/signin'
+                element={<SignIn setCurrentUser={setCurrentUser} setNavbarFlag={setNavbarFlag} navbarFlag={navbarFlag} />}
+              />
+              <Route path='/signup' element={<SignUp />} />
+              <Route path='/favorites' element={<Favorites />} />
 
-          </Routes>
-        </BrowserRouter>
-      </ApiProvider>
+              <Route path='/details' element={<MovieDetails />} />
+              <Route path='/actors' element={<Actors />} />
+
+            </Routes>
+          </BrowserRouter>
+        </ApiProvider>
+      </DataProvider>
     </div >
   );
 }

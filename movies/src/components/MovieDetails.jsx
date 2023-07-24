@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import AllData from "../ContextApi";
 import Actors from "./Actors";
 import CrewMembers from "./CrewMembers";
 
 
-export default function MovieDetails(props) {
+export default function MovieDetails() {
+
+    const { selectedMovie } = useContext(AllData);
 
     const [thisMovie, setThisMovie] = useState({});
     const [movieId, setMovieId] = useState('movie_id');
@@ -27,15 +30,13 @@ export default function MovieDetails(props) {
 
 
     useEffect(() => {
-        setThisMovie(props.selectedMovie);
+        setThisMovie(selectedMovie);
         setMovieId(thisMovie.id);
     }, [thisMovie])
 
     useEffect(() => {
         fetchMovies();
     }, [movieId])
-
-
 
 
     return (
@@ -83,6 +84,8 @@ export default function MovieDetails(props) {
             </div>
 
             <div className="secondConatinerDetails">
+
+
 
                 <Actors movieId={movieId} />
 

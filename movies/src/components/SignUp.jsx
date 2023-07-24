@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import AllData from "../ContextApi";
 import { useNavigate } from "react-router-dom";
 
-export default function SignUp(props) {
+export default function SignUp() {
+
+    const { register } = useContext(AllData);
 
     const nav = useNavigate();
 
@@ -46,7 +49,7 @@ export default function SignUp(props) {
         setPassAgainError('');
 
 
-        props.register(userName, email, password);
+        register(userName, email, password);
         nav('/signin');
 
     }

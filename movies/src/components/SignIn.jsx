@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import AllData from "../ContextApi";
 import { useNavigate } from "react-router-dom";
 
 export default function SignIn(props) {
+    const { users } = useContext(AllData);
 
     const nav = useNavigate();
-    const allUsers = JSON.parse(localStorage.getItem('users'));
+    const allUsers = users;
+    console.log(users);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
