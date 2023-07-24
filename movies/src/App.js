@@ -133,7 +133,7 @@ function App() {
           < Routes >
 
             <Route path='/' element={<HomePage setSelectedMovie={setSelectedMovie} selectedMovie={selectedMovie} searchedMovies={searchedMovies} />} />
-            <Route path='/toprated' element={<TopRatedMovies />} />
+            <Route path='/toprated' element={<TopRatedMovies setSelectedMovie={setSelectedMovie} />} />
 
             <Route path='/signin'
               element={<SignIn users={users} setCurrentUser={setCurrentUser} setNavbarFlag={setNavbarFlag} navbarFlag={navbarFlag} />}

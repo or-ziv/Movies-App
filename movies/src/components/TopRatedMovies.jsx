@@ -1,8 +1,8 @@
 import React from "react";
 import { useGetTopRatedMoviesQuery } from '../features/apiSlice'
-import MovieCard from "./MovieCard";
+import RenderMovies from "./RenderMovies";
 
-export default function TopRatedMovies() {
+export default function TopRatedMovies(props) {
 
     const { data } = useGetTopRatedMoviesQuery();
     const topMovies = data?.results;
@@ -12,10 +12,11 @@ export default function TopRatedMovies() {
         <div className="topRatedMovies flex">
 
             <div className="topRatedMap">
-                {topMovies?.map((movie, index) => {
+                {topMovies?.map((movie) => {
                     return (
-                        <div key={index}>
-                            <MovieCard movie={movie} index={index} />
+                        <div key={movie.id}>
+                            <RenderMovies setSelectedMovie={props.setSelectedMovie} upComingMovies={topMovies} />
+                            {/* <MovieCard movie={movie} index={index} /> */}
                         </div>
                     )
                 })}

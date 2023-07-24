@@ -48,9 +48,9 @@ export default function HomePage(props) {
                     <>
                         <h2 style={{ color: "white" }}>Movies Found</h2>
                         <RenderMovies
+                            setHeroMovie={setHeroMovie}
                             upComingMovies={props.searchedMovies}
                             setSelectedMovie={props.setSelectedMovie}
-                            setHeroMovie={setHeroMovie}
                         />
                     </>
                 )}
