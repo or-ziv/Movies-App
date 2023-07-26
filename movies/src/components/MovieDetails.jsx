@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import AllData from "../ContextApi";
 import Actors from "./Actors";
 import CrewMembers from "./CrewMembers";
+import MoviesReviews from "./MoviesReviews";
 
 
 export default function MovieDetails() {
@@ -46,7 +47,6 @@ export default function MovieDetails() {
 
             <div className="flex details" style={{ flexDirection: 'row', gap: ' 100px' }}>
 
-
                 <div className="flex" style={{ flexDirection: 'row', gap: '100px' }}>
 
                     <div className="flex">
@@ -83,8 +83,11 @@ export default function MovieDetails() {
                 </div>
             </div>
 
-            <div className="secondConatinerDetails">
 
+
+            <MoviesReviews movieId={movieId} thisMovie={thisMovie} />
+            
+            <div className="secondConatinerDetails">
 
 
                 <Actors movieId={movieId} />

@@ -14,7 +14,7 @@ export default function CrewMembers(props) {
             .then(res => res.json())
             .then((data) => {
                 console.log(data.crew)
-                setCrew(data.crew.slice(0, 6));
+                setCrew(data?.crew.slice(0, 6));
             })
             .catch((err) => {
                 console.log(err);
@@ -35,7 +35,7 @@ export default function CrewMembers(props) {
             {crew?.map((val) => {
                 return (
                     <div key={val.id} className="flex actorDisplay" style={{ flexDirection: 'row' }}>
-                        <img className="ActorImg" src={`https://image.tmdb.org/t/p/w500${val.profile_path}`} alt={`${val.name}`} />
+                        <img className="ActorImg" src={`https://image.tmdb.org/t/p/w500${val.profile_path}`} alt={`${val.name} - img`} />
 
                         <div className="flex" >
                             <h3>{val.name}</h3>

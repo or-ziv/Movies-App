@@ -270,10 +270,11 @@ p {
   width: 95%;
 }
 
-.imgForTrailer{
-  
+.imgForTrailer {
+
   height: 350px;
 }
+
 .moreDetails {
   flex-direction: row;
 }
@@ -328,12 +329,38 @@ p {
 
 }
 
-.actorDisplay{
+.actorDisplay {
   cursor: pointer;
   background-color: #3d434c;
   border-radius: 20px;
 }
-.actorDisplay:hover{
-filter: brightness(85%);
+
+.actorDisplay:hover {
+  filter: brightness(85%);
 }
+
+/* ______________________________________________________________________________ */
+
+
+/* Movie Reviews Component Style */
+
+
+.moviesReview {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-flow: row;
+  gap: 50px;
+}
+
+
+.reviewDisplay {
+  margin-top: 25px;
+  padding: 25px;
+  background-color: #373c44;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  border-radius: 15px;
+  width: 850px;
+}
+
+
 /* ______________________________________________________________________________ */
