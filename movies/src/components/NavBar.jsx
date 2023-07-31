@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import AllData from "../ContextApi";
 
 export default function NavBar(props) {
+
+    const { navbarFlag, logOut } = useContext(AllData);
     const nav = useNavigate();
 
     const handleSubmit = (e) => {
@@ -35,7 +38,7 @@ export default function NavBar(props) {
             </form>
 
             <div >
-                {!props.navbarFlag ? (
+                {!navbarFlag ? (
                     <>
                         <Link to={'/signin'}>
                             <button className="btnsNavbar btnsNavbar2 btnAnimation">Sign In</button>
@@ -52,7 +55,7 @@ export default function NavBar(props) {
                         </Link>
 
                         <Link to={'/'}>
-                            <button onClick={() => { props.logOut() }} className="btnsNavbar btnsNavbar2 btnAnimation">Log Out</button>
+                            <button onClick={() => { logOut() }} className="btnsNavbar btnsNavbar2 btnAnimation">Log Out</button>
                         </Link>
                     </>
                 )}

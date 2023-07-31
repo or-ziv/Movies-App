@@ -14,11 +14,12 @@ import SignUp from './components/SignUp';
 import Favorites from './components/Favorites';
 import MovieDetails from './components/MovieDetails';
 import Actors from './components/Actors';
+import PopularMovies from './components/PopularMovies';
 
 
 function App() {
 
-  const { setSelectedMovie, users } = useContext(AllData);
+  const { setSelectedMovie } = useContext(AllData);
 
 
   // This is to show some of the movies
@@ -53,41 +54,6 @@ function App() {
   };
 
 
-  // Checkes Wheter the user is logged in or not
-  const [navbarFlag, setNavbarFlag] = useState(() => {
-    let navbarFlagFromStorage = localStorage.getItem('isLoggedIn');
-    if (navbarFlagFromStorage !== null && navbarFlagFromStorage !== undefined) {
-      return JSON.parse(navbarFlagFromStorage);
-    }
-    return false;
-  });
-
-
-  // Keeps the user logged in even after closing the browser
-  const [currentUser, setCurrentUser] = useState(() => {
-    let currentUserFromStorage = localStorage.getItem('currentUser');
-    if (currentUserFromStorage !== null && currentUserFromStorage !== undefined) {
-      try {
-        return JSON.parse(currentUserFromStorage);
-      } catch (error) {
-        console.error("Error parsing currentUserFromStorage:", error);
-        return {};
-      }
-    }
-    return {};
-  });
-
-
-  // User can log out, updating the states and local storage
-  const logOut = () => {
-    setCurrentUser({});
-    setNavbarFlag(false)
-
-    localStorage.setItem('isLoggedIn', JSON.stringify(false));
-    localStorage.setItem('currentUser', JSON.stringify({}));
-  }
-
-  
   const [searchKey, setSearchKey] = useState('');
   const [searchedMovies, setSearchedMovies] = useState('');
 
@@ -107,22 +73,18 @@ function App() {
         <ApiProvider api={moviesApi}>
           <BrowserRouter>
             <NavBar
-              navbarFlag={navbarFlag}
-              logOut={logOut}
               setSearchKey={setSearchKey}
               searchMovies={searchMovies}
               searchKey={searchKey}
               setSearchedMovies={setSearchedMovies}
-              currentUser={currentUser}
             />
             < Routes >
 
               <Route path='/' element={<HomePage searchedMovies={searchedMovies} />} />
               <Route path='/toprated' element={<TopRatedMovies />} />
+              <Route path='/popularMovies' element={<PopularMovies />} />
 
-              <Route path='/signin'
-                element={<SignIn setCurrentUser={setCurrentUser} setNavbarFlag={setNavbarFlag} navbarFlag={navbarFlag} />}
-              />
+              <Route path='/signin' element={<SignIn />} />
               <Route path='/signup' element={<SignUp />} />
               <Route path='/favorites' element={<Favorites />} />
 

@@ -3,7 +3,7 @@ import AllData from "../ContextApi";
 import { useNavigate } from "react-router-dom";
 
 export default function SignIn(props) {
-    const { users } = useContext(AllData);
+    const { users, setNavbarFlag, setCurrentUser } = useContext(AllData);
 
     const nav = useNavigate();
     const allUsers = users;
@@ -28,8 +28,8 @@ export default function SignIn(props) {
             return;
         }
 
-        props.setCurrentUser(thisUser);
-        props.setNavbarFlag(true);
+        setCurrentUser(thisUser);
+        setNavbarFlag(true);
         localStorage.setItem('isLoggedIn', JSON.stringify(true));
         localStorage.setItem('currentUser', JSON.stringify(thisUser));
         nav('/');

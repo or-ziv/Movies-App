@@ -39,7 +39,7 @@ export default function HomePage(props) {
                     <>
                         <h2 style={{ color: "white" }}>Upcoming Movies</h2>
                         <RenderMovies
-                            upComingMovies={upComingMovies.slice(0, 8)}
+                            moviesToRender={upComingMovies?.slice(0, 8)}
                         />
                     </>
 
@@ -47,7 +47,7 @@ export default function HomePage(props) {
                     <>
                         <h2 style={{ color: "white" }}>Movies Found</h2>
                         <RenderMovies
-                            upComingMovies={props.searchedMovies}
+                            moviesToRender={props.searchedMovies}
                         />
                     </>
                 )}

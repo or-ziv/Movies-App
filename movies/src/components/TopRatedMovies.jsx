@@ -8,13 +8,13 @@ export default function TopRatedMovies() {
 
     const { data } = useGetTopRatedMoviesQuery();
     const topMovies = data?.results;
-    const firstMovie = topMovies?.[0];
+    // const firstMovie = topMovies?.[0];
 
     const { heroMovie, setHeroMovie, setSelectedMovie } = useContext(AllData);
 
     useEffect(() => {
         if (data?.results && data.results.length > 0) {
-            setHeroMovie(data.results[0]);
+            setHeroMovie(data?.results[0]);
         }
     }, [data, setHeroMovie]);
 
@@ -38,15 +38,13 @@ export default function TopRatedMovies() {
                     <button className="btns txtHover">Play Trailer</button>
                 </div>
             </div>
+
+
             <h2 style={{ color: "white" }}>Top Rated Movies</h2>
-            <div className="">
-                {topMovies?.map((movie) => {
-                    return (
-                        <div key={movie.id}>
-                            <RenderMovies setSelectedMovie={setSelectedMovie} upComingMovies={topMovies} />
-                        </div>
-                    )
-                })}
+            <div >
+                <div>
+                    <RenderMovies setSelectedMovie={setSelectedMovie} moviesToRender={topMovies} />
+                </div>
             </div>
 
         </div>

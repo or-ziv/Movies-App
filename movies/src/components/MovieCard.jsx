@@ -5,7 +5,7 @@ import AllData from "../ContextApi";
 
 
 export default function MovieCard({ movie }) {
-    const { selectedMovie, setSelectedMovie } = useContext(AllData);
+    const { setSelectedMovie } = useContext(AllData);
 
     const [isHovering, setIsHovering] = useState(false);
 
@@ -21,7 +21,7 @@ export default function MovieCard({ movie }) {
         <div className="movieCard">
             <h3 className="movieTitle" >{movie?.title}</h3>
 
-            <div className="movieDisplay" key={movie.id}
+            <div className="movieDisplay" key={movie?.id}
                 onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseOut}
                 style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${movie.poster_path})` }}>

@@ -6,7 +6,8 @@ export default function RenderMovies(props) {
 
     const { setHeroMovie } = useContext(AllData);
 
-    const tenUpComingMovies = props.upComingMovies?.slice(0, 16);
+    const renderMovies = props.moviesToRender?.slice(0, 16);
+
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -14,9 +15,8 @@ export default function RenderMovies(props) {
 
     return (
         <div>
-
             <div className="upComing">
-                {tenUpComingMovies?.map((movie) => (
+                {renderMovies?.map((movie) => (
                     <div key={movie.id} onClick={() => { setHeroMovie(movie); scrollToTop(); }}>
                         <MovieCard
                             movie={movie}
