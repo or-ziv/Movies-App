@@ -1,12 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import AllData from "../ContextApi";
 
 export default function NavBar(props) {
-
     const { navbarFlag, logOut } = useContext(AllData);
     const nav = useNavigate();
+
+    const [btnBG, setBtnBG] = useState(0);
+
+    const handleClick = (index) => {
+        setBtnBG(index);
+    }
+
+    const isButtonActive = (index) => {
+        return btnBG === index ? 'activeBtn' : '';
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -14,16 +23,23 @@ export default function NavBar(props) {
         props.searchMovies(e);
     }
 
-
     return (
         <div className="navbar flex">
             <div>
                 <Link to={'/'}>
-                    <button onClick={() => { props.setSearchedMovies('') }} className="btnsNavbar btnAnimation">Home</button>
+                    <button
+                        onClick={() => { handleClick(0) }}
+                        className={`btnsNavbar btnAnimation ${isButtonActive(0)}`}>
+                        Home
+                    </button>
                 </Link>
 
                 <Link to={'/toprated'}>
-                    <button className="btnsNavbar btnsNavbar2 btnAnimation">Top Rated</button>
+                    <button
+                        onClick={() => { handleClick(1) }}
+                        className={`btnsNavbar btnAnimation ${isButtonActive(1)}`}>
+                        Top Rated
+                    </button>
                 </Link>
             </div>
 
@@ -37,25 +53,41 @@ export default function NavBar(props) {
                 <input type="submit" onClick={handleSubmit} style={{ display: 'none' }} />
             </form>
 
-            <div >
+            <div>
                 {!navbarFlag ? (
                     <>
                         <Link to={'/signin'}>
-                            <button className="btnsNavbar btnsNavbar2 btnAnimation">Sign In</button>
+                            <button
+                                onClick={() => { handleClick(2) }}
+                                className={`btnsNavbar btnAnimation ${isButtonActive(2)}`}>
+                                Sign In
+                            </button>
                         </Link>
 
                         <Link to={'/signup'}>
-                            <button className="btnsNavbar btnsNavbar2 btnAnimation">Sign Up</button>
+                            <button
+                                onClick={() => { handleClick(3) }}
+                                className={`btnsNavbar btnAnimation ${isButtonActive(3)}`}>
+                                Sign Up
+                            </button>
                         </Link>
                     </>
                 ) : (
                     <>
                         <Link to={`/favorites`}>
-                            <button className="btnsNavbar btnsNavbar2 btnAnimation">Favorites</button>
+                            <button
+                                onClick={() => { handleClick(4) }}
+                                className={`btnsNavbar btnAnimation ${isButtonActive(4)}`}>
+                                Favorites
+                            </button>
                         </Link>
 
                         <Link to={'/'}>
-                            <button onClick={() => { logOut() }} className="btnsNavbar btnsNavbar2 btnAnimation">Log Out</button>
+                            <button
+                                onClick={() => { logOut(); }}
+                                className="btnsNavbar  btnAnimation">
+                                Log Out
+                            </button>
                         </Link>
                     </>
                 )}
@@ -64,5 +96,3 @@ export default function NavBar(props) {
         </div>
     )
 }
-
-

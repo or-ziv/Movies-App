@@ -2,12 +2,12 @@ import React, { useState, useContext } from "react";
 import AllData from "../ContextApi";
 import { useNavigate } from "react-router-dom";
 
-export default function SignIn(props) {
+export default function SignIn() {
     const { users, setNavbarFlag, setCurrentUser } = useContext(AllData);
 
     const nav = useNavigate();
     const allUsers = users;
-    console.log(users);
+
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -48,7 +48,7 @@ export default function SignIn(props) {
                 <br />
                 <input onChange={(e) => { setPassword(e.target.value) }} className="inputs " type="password" placeholder="Enter Your Password..." />
                 <br />
-                <button onClick={handleLogin} className="btns margin btnAnimation btnsNavbar" style={{ width: '150px' }}>Login</button>
+                <button onClick={handleLogin} className="btns margin btnAnimation btnsNavbar signBtn" style={{ width: '150px' }}>Login</button>
 
                 <br />
             </div>

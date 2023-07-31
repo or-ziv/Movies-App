@@ -97,8 +97,8 @@ p {
   width: 100px;
   margin: 15px;
 
-  background-color: #ffc300;
-  color: #373c44;
+  background-color: #373c44;
+  color: #ffc300;
 
   font-size: 18px;
   font-weight: bold;
@@ -109,14 +109,15 @@ p {
 
 }
 
-.btnsNavbar:active {
-  background-color: #d8a708;
 
+.activeBtn {
+  color: #373c44;
+  background-color: #ffc300;
 }
 
-.btnsNavbar2 {
-  background-color: #373c44;
-  color: #ffc300;
+.activeBtn:active {
+  background-color: #d8a708;
+
 }
 
 .btnsNavbar2:active {
@@ -203,6 +204,12 @@ p {
   border-radius: 15px;
   margin-top: 75px;
   box-shadow: rgba(0, 0, 0, 0.386) 0px 22px 70px 4px;
+}
+
+.signBtn {
+  background-color: #ffc300;
+  color: #373c44;
+
 }
 
 /* ______________________________________________________________________________ */

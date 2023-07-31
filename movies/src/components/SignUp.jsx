@@ -84,7 +84,7 @@ export default function SignUp() {
                 <input onChange={(e) => { setPasswordAgain(e.target.value) }} className="inputs" type="password" placeholder="Enter Your Password Again..." />
                 <br />
 
-                <button onClick={handleSignUp} className="btns margin btnAnimation btnsNavbar" style={{ width: '150px' }}>Sign Up</button>
+                <button onClick={handleSignUp} className="btns margin btnAnimation btnsNavbar signBtn" style={{ width: '150px' }}>Sign Up</button>
 
                 <br />
                 <p onClick={() => { nav('/signin') }} style={{ cursor: 'pointer' }}>Already Have an Account? Click Here</p>
