@@ -16,9 +16,8 @@ export default function Actors(props) {
         fetch(url)
             .then(res => res.json())
             .then((data) => {
-                // console.log(data);
-                setActors(data.cast.slice(0, 20));
-                setCrew(data.crew);
+                setActors(data?.cast?.slice(0, 10));
+                setCrew(data?.crew);
             })
             .catch((err) => {
                 console.log(err);

@@ -225,8 +225,7 @@ p {
 
   box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
   border: 5px solid #373c44;
-  padding: 20px;
-
+  padding: 15px;
   background-position: center;
   background-size: cover;
 }
@@ -247,6 +246,16 @@ p {
   font-size: 16px;
 }
 
+.rating {
+  font-size: 35px;
+}
+
+/* .favoriteBtn {
+  border-radius: 50px;
+  width: 65px;
+  height: 65px;
+  font-size: 25px;
+} */
 
 /* ______________________________________________________________________________ */
 
@@ -317,7 +326,7 @@ p {
   border: 3px solid #222;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-
+  border: 3px solid rgba(0, 0, 0, 0.611)
 }
 
 .ActorImg {
@@ -366,8 +375,22 @@ p {
   background-color: #373c44;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   border-radius: 15px;
+  /* border: 3px solid rgba(0, 0, 0, 0.611); */
   width: 850px;
+  height: auto;
 }
 
+
+/* ______________________________________________________________________________ */
+
+/* Similar Movies Componrnt Style */
+.similarMovies {
+  margin-top: 25px;
+  padding: 25px;
+  background-color: #373c44;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  border-radius: 15px;
+  border: 3px solid rgba(0, 0, 0, 0.611)
+}
 
 /* ______________________________________________________________________________ */

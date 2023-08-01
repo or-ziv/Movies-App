@@ -13,8 +13,7 @@ export default function CrewMembers(props) {
         fetch(url)
             .then(res => res.json())
             .then((data) => {
-                console.log(data.crew)
-                setCrew(data?.crew.slice(0, 6));
+                setCrew(data?.crew?.slice(0, 6));
             })
             .catch((err) => {
                 console.log(err);

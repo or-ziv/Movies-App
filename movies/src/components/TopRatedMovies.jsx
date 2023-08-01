@@ -1,14 +1,14 @@
 import React, { useContext, useEffect } from "react";
 import AllData from "../ContextApi";
-import { useGetTopRatedMoviesQuery } from '../features/apiSlice'
+import { useGetTopRatedMoviesQuery, useGetTopRatedMoviesPage2Query } from '../features/apiSlice'
 import RenderMovies from "./RenderMovies";
 
 
 export default function TopRatedMovies() {
 
     const { data } = useGetTopRatedMoviesQuery();
+    // const { dataPage2 } = useGetTopRatedMoviesPage2Query();
     const topMovies = data?.results;
-    // const firstMovie = topMovies?.[0];
 
     const { heroMovie, setHeroMovie, setSelectedMovie } = useContext(AllData);
 
@@ -43,7 +43,7 @@ export default function TopRatedMovies() {
             <h2 style={{ color: "white" }}>Top Rated Movies</h2>
             <div >
                 <div>
-                    <RenderMovies setSelectedMovie={setSelectedMovie} moviesToRender={topMovies} />
+                    <RenderMovies moviesToRender={topMovies} />
                 </div>
             </div>
 

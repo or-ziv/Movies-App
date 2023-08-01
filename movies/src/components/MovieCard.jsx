@@ -17,10 +17,11 @@ export default function MovieCard({ movie }) {
         setIsHovering(false);
     };
 
+
     return (
         <div className="movieCard">
-            <h3 className="movieTitle" >{movie?.title}</h3>
 
+            <h3 className="movieTitle" >{movie?.title}</h3>
             <div className="movieDisplay" key={movie?.id}
                 onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseOut}
@@ -40,8 +41,8 @@ export default function MovieCard({ movie }) {
 
             </div>
 
-            <div className="flex" style={{ flexDirection: 'row' }}>
-                <h3>{movie.vote_average}</h3>
+            <div className="movieDisplay flex" style={{ flexDirection: 'row', height: '15px', borderTop: 'none' }}>
+                <h3 style={{ marginLeft: '15px' }}>{movie?.vote_average}</h3>
                 <img src={starIcon} alt="starIcon" style={{ width: '20px', border: 'none', marginLeft: '10px' }} />
             </div>
 

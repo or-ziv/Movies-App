@@ -63,13 +63,15 @@ export const DataProvider = ({ children }) => {
         localStorage.setItem('users', JSON.stringify(users));
     }, [users]);
 
+
+
+
     return (
         <AllData.Provider
             value={{ heroMovie, setHeroMovie, selectedMovie, setSelectedMovie, users, setUsers, register, navbarFlag, setNavbarFlag, logOut, currentUser, setCurrentUser }}>
             {children}
         </AllData.Provider>
     )
-
 }
 
 

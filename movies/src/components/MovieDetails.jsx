@@ -3,6 +3,8 @@ import AllData from "../ContextApi";
 import Actors from "./Actors";
 import CrewMembers from "./CrewMembers";
 import MoviesReviews from "./MoviesReviews";
+import SimilarMovies from "./SimilarMovies";
+import MovieImages from "./MovieImages";
 
 
 export default function MovieDetails() {
@@ -70,9 +72,6 @@ export default function MovieDetails() {
 
                     <img className="imgForTrailer" style={{ cursor: 'default' }}
                         src={`https://image.tmdb.org/t/p/w500${thisMovie?.backdrop_path}`} alt={`${thisMovie?.title}`} />
-
-
-
                 </div>
 
                 {/* Display the movie overview and release date  */}
@@ -84,9 +83,15 @@ export default function MovieDetails() {
             </div>
 
 
+            {/* Similar Movies */}
+            <div className="flex" >
+                {/* <MovieImages movieId={movieId} /> */}
+                <br />
+                <SimilarMovies movieId={movieId} setThisMovie={setThisMovie} setMovieId={setMovieId} />
+            </div>
 
             <MoviesReviews movieId={movieId} thisMovie={thisMovie} />
-            
+
             <div className="secondConatinerDetails">
 
 
