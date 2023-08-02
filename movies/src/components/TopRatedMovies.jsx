@@ -10,7 +10,7 @@ export default function TopRatedMovies() {
     // const { dataPage2 } = useGetTopRatedMoviesPage2Query();
     const topMovies = data?.results;
 
-    const { heroMovie, setHeroMovie, setSelectedMovie } = useContext(AllData);
+    const { heroMovie, setHeroMovie } = useContext(AllData);
 
     useEffect(() => {
         if (data?.results && data.results.length > 0) {
