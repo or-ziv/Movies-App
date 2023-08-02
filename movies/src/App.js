@@ -12,8 +12,8 @@ import TopRatedMovies from './components/TopRatedMovies';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import Favorites from './components/Favorites';
-import MovieDetails from './components/MovieDetails';
-import Actors from './components/Actors';
+import MovieDetails from './components/for details/MovieDetails';
+import Actors from './components/for details/Actors';
 import PopularMovies from './components/PopularMovies';
 
 

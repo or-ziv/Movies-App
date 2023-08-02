@@ -47,7 +47,7 @@ export default function MoviesReviews(props) {
                 reviews?.slice(0, 4).map((val) => (
                     <div className="reviewDisplay" key={val.id}>
                         <h2 style={{ textDecoration: 'underline' }}>{val.author}</h2>
-                        <p style={{ color: 'white' }}>{val.content}</p>
+                        <p style={{ color: 'white', textAlign: 'left' }}>{val.content}</p>
                     </div>
                 ))
             )}

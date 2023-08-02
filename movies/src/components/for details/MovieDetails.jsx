@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import AllData from "../ContextApi";
+import AllData from "../../ContextApi";
 import Actors from "./Actors";
 import CrewMembers from "./CrewMembers";
 import MoviesReviews from "./MoviesReviews";
