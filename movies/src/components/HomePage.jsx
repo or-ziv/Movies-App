@@ -1,6 +1,6 @@
-import React, { useEffect, useContext } from "react";
-import AllData from "../ContextApi";
+import React, { useEffect, useContext, useState } from "react";
 import { useGetUpComingMoviesQuery } from "../features/apiSlice";
+import AllData from "../ContextApi";
 import RenderMovies from "./RenderMovies";
 
 export default function HomePage(props) {
@@ -9,10 +9,34 @@ export default function HomePage(props) {
 
     const { heroMovie, setHeroMovie } = useContext(AllData);
 
-
     useEffect(() => {
         setHeroMovie(upComingMovies?.[0]);
     }, [upComingMovies]);
+
+
+    // useEffect(() => {
+    // for (let i = 0; i < upComingMovies?.length; i++) {
+
+    //     const HeroMovieTimer = (index) => {
+    //         if (index >= upComingMovies?.length) {
+    //             index = 0;
+    //         }
+
+    //         (setTimeout(() => {
+    //             setHeroMovie(upComingMovies?.[index]);
+    //             HeroMovieTimer(index + 1);
+    //             csonsole.log(index);
+    //         }, 3000))
+    //     }
+    //     HeroMovieTimer(0);
+    // }
+    // }, [])
+
+
+
+
+
+
 
     return (
         <div className="homePage flex">
