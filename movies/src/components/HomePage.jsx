@@ -14,6 +14,7 @@ export default function HomePage(props) {
     }, [upComingMovies]);
 
 
+
     // useEffect(() => {
     // for (let i = 0; i < upComingMovies?.length; i++) {
 
