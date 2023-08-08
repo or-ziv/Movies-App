@@ -53,7 +53,7 @@ function App() {
       });
   };
 
-
+  
   const [searchKey, setSearchKey] = useState('');
   const [searchedMovies, setSearchedMovies] = useState('');
 

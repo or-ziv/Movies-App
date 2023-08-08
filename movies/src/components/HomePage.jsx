@@ -15,6 +15,25 @@ export default function HomePage(props) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // useEffect(() => {
     // for (let i = 0; i < upComingMovies?.length; i++) {
 
@@ -32,10 +51,6 @@ export default function HomePage(props) {
     //     HeroMovieTimer(0);
     // }
     // }, [])
-
-
-
-
 
 
 

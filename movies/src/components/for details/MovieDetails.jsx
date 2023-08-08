@@ -4,6 +4,7 @@ import Actors from "./Actors";
 import CrewMembers from "./CrewMembers";
 import MoviesReviews from "./MoviesReviews";
 import SimilarMovies from "./SimilarMovies";
+import Youtube from 'react-youtube';
 import MovieImages from "./MovieImages";
 
 
@@ -14,23 +15,25 @@ export default function MovieDetails() {
     const [thisMovie, setThisMovie] = useState({});
     const [movieId, setMovieId] = useState('movie_id');
     const [movieDetails, setMovieDetails] = useState({});
+    const [movieVideos, setMovieVideos] = useState('');
 
-    const fetchMovies = () => {
+    const fetchMovieDetails = () => {
         const API_URL = 'https://api.themoviedb.org/3/movie/';
         let id = movieId;
         const apiKey = '4a8e3679e70d606a9981baa4c0311d38';
-        let url = `${API_URL}/${id}?language=en-US&page=1&api_key=${apiKey}`;
+        const getVideos = 'append_to_response=videos'
+        let url = `${API_URL}/${id}?language=en-US&page=1&api_key=${apiKey}&${getVideos}`;
 
         fetch(url)
             .then(res => res.json())
             .then((data) => {
                 setMovieDetails(data)
+                setMovieVideos(data?.videos?.results)
             })
             .catch((err) => {
                 console.log(err);
             });
     };
-
 
     useEffect(() => {
         setThisMovie(selectedMovie);
@@ -38,19 +41,26 @@ export default function MovieDetails() {
     }, [thisMovie])
 
     useEffect(() => {
-        fetchMovies();
+        fetchMovieDetails();
     }, [movieId])
+
+    const renderTrailer = () => {
+        const trailer = movieVideos?.find(vid => vid.name === 'Official Trailer' || vid.name === 'Main Trailer');
+
+        return (
+            <Youtube videoId={trailer?.key} />
+        )
+    };
 
 
     return (
-        <div className="movieDetails flex">
+        <div className="flex">
             <br />
             <h1 style={{ color: 'white' }}>{thisMovie?.title}</h1>
 
             <div className="flex details" style={{ flexDirection: 'row', gap: ' 100px' }}>
 
                 <div className="flex" style={{ flexDirection: 'row', gap: '100px' }}>
-
                     <div className="flex">
                         {/* Display The movie image */}
                         <img className="imgDisplayDetails" style={{ cursor: 'default' }}
@@ -70,8 +80,12 @@ export default function MovieDetails() {
                         </div>
                     </div>
 
-                    <img className="imgForTrailer" style={{ cursor: 'default' }}
-                        src={`https://image.tmdb.org/t/p/w500${thisMovie?.backdrop_path}`} alt={`${thisMovie?.title}`} />
+                    {/* Movie Trailer */}
+                    <div className="youtubeCont">
+                        {movieVideos ? renderTrailer() : 'No Trailers Avaliable'}
+                    </div>
+
+
                 </div>
 
                 {/* Display the movie overview and release date  */}
@@ -80,6 +94,8 @@ export default function MovieDetails() {
                     <p style={{ width: '600px', color: 'white', textAlign: 'left', lineHeight: '35px' }}>{thisMovie?.overview}</p>
                     <h3>Release Date: {thisMovie?.release_date}</h3>
                 </div>
+
+
             </div>
 
 
