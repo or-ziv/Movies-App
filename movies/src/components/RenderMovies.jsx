@@ -4,7 +4,7 @@ import MovieCard from "./MovieCard";
 
 export default function RenderMovies(props) {
 
-    const { setHeroMovie } = useContext(AllData);
+    const { setHeroMovie, setMovieVideos } = useContext(AllData);
 
     const renderMovies = props.moviesToRender?.slice(0, 16);
 
@@ -17,7 +17,7 @@ export default function RenderMovies(props) {
         <div>
             <div className="upComing">
                 {renderMovies?.map((movie) => (
-                    <div key={movie.id} onClick={() => { setHeroMovie(movie); scrollToTop(); }}>
+                    <div key={movie.id} onClick={() => { setHeroMovie(movie); scrollToTop(); setMovieVideos('') }}>
                         <MovieCard
                             movie={movie}
                         />

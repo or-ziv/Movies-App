@@ -10,12 +10,11 @@ import MovieImages from "./MovieImages";
 
 export default function MovieDetails() {
 
-    const { selectedMovie } = useContext(AllData);
+    const { selectedMovie, setMovieVideos, movieVideos } = useContext(AllData);
 
     const [thisMovie, setThisMovie] = useState({});
     const [movieId, setMovieId] = useState('movie_id');
     const [movieDetails, setMovieDetails] = useState({});
-    const [movieVideos, setMovieVideos] = useState('');
 
     const fetchMovieDetails = () => {
         const API_URL = 'https://api.themoviedb.org/3/movie/';

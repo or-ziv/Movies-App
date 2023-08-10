@@ -1,37 +1,49 @@
 import React, { useEffect, useContext, useState } from "react";
 import { useGetUpComingMoviesQuery } from "../features/apiSlice";
 import AllData from "../ContextApi";
+import Youtube from 'react-youtube';
 import RenderMovies from "./RenderMovies";
 
 export default function HomePage(props) {
     const { data } = useGetUpComingMoviesQuery();
     const upComingMovies = data?.results;
 
-    const { heroMovie, setHeroMovie } = useContext(AllData);
+    const { heroMovie, setHeroMovie, setMovieVideos, movieVideos } = useContext(AllData);
 
     useEffect(() => {
         setHeroMovie(upComingMovies?.[0]);
     }, [upComingMovies]);
 
 
+    const fetchMovieVideos = () => {
+        const API_URL = 'https://api.themoviedb.org/3/movie/';
+        let id = heroMovie.id;
+        const apiKey = '4a8e3679e70d606a9981baa4c0311d38';
+        const getVideos = 'append_to_response=videos'
+        let url = `${API_URL}/${id}?language=en-US&page=1&api_key=${apiKey}&${getVideos}`;
 
+        fetch(url)
+            .then(res => res.json())
+            .then((data) => {
+                setMovieVideos(data?.videos?.results)
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
 
+    const renderTrailer = () => {
+        const trailer = movieVideos?.find(vid => vid.name === 'Official Trailer' || vid.name === 'Main Trailer');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return (
+            <Youtube videoId={trailer?.key}
+            // opts={{
+            //     width: '1200px',
+            //     height: '600px',
+            // }}
+            />
+        )
+    };
 
 
     // useEffect(() => {
@@ -63,16 +75,32 @@ export default function HomePage(props) {
                 }}
             >
                 <div className="hero flex">
+
+                    <div className="youtubeHero">
+                        {movieVideos ?
+                            <>
+                                <button onClick={() => { setMovieVideos('') }} className="btns txtHover" style={{marginBottom: '15px'}}>Close</button>
+
+                                {renderTrailer()}
+                            </>
+                            : null}
+                    </div>
+
                     <h1 className="txtHover" style={{ color: "white", fontSize: "72px" }}>
                         {heroMovie?.title}
                     </h1>
+
                     <p className="txtHover" style={{ color: "white", width: '1000px' }}>
                         {heroMovie?.overview ? heroMovie?.overview : null}
                     </p>
+
                     <br />
-                    <button className="btns txtHover">Play Trailer</button>
+                    <button onClick={fetchMovieVideos} className="btns txtHover">Play Trailer</button>
+                    <br />
+
                 </div>
             </div>
+
 
             <div className="upComingMoviesDiv">
                 {props.searchedMovies.length === 0 ? (
@@ -92,6 +120,6 @@ export default function HomePage(props) {
                     </>
                 )}
             </div>
-        </div>
+        </div >
     );
 }

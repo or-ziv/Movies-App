@@ -53,7 +53,6 @@ function App() {
       });
   };
 
-  
   const [searchKey, setSearchKey] = useState('');
   const [searchedMovies, setSearchedMovies] = useState('');
 
@@ -65,6 +64,8 @@ function App() {
   useEffect(() => {
     fetchMovies();
   }, []);
+
+
 
 
   return (

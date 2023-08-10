@@ -10,6 +10,9 @@ export const DataProvider = ({ children }) => {
     // To Select A Movie
     const [selectedMovie, setSelectedMovie] = useState({});
 
+    // Getting the videos for each movie
+    const [movieVideos, setMovieVideos] = useState('');
+
 
     // Catch users from the localStorage so the array won't reset
     const [users, setUsers] = useState(() => {
@@ -64,11 +67,18 @@ export const DataProvider = ({ children }) => {
     }, [users]);
 
 
-
-
     return (
         <AllData.Provider
-            value={{ heroMovie, setHeroMovie, selectedMovie, setSelectedMovie, users, setUsers, register, navbarFlag, setNavbarFlag, logOut, currentUser, setCurrentUser }}>
+            value={{
+                heroMovie, setHeroMovie,
+                selectedMovie, setSelectedMovie,
+                users, setUsers,
+                register,
+                navbarFlag, setNavbarFlag,
+                logOut,
+                currentUser, setCurrentUser,
+                movieVideos, setMovieVideos
+            }}>
             {children}
         </AllData.Provider>
     )
