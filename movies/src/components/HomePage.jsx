@@ -36,11 +36,17 @@ export default function HomePage(props) {
         const trailer = movieVideos?.find(vid => vid.name === 'Official Trailer' || vid.name === 'Main Trailer');
 
         return (
-            <Youtube videoId={trailer?.key}
-            // opts={{
-            //     width: '1200px',
-            //     height: '600px',
-            // }}
+            <Youtube
+                videoId={trailer?.key}
+                containerClassName={'movieContent'}
+                opts={{
+                    width: '100%',
+                    height: '100%',
+                    playerVars: {
+                        autoplay: 1,
+                        controls: 0
+                    }
+                }}
             />
         )
     };
@@ -76,27 +82,30 @@ export default function HomePage(props) {
             >
                 <div className="hero flex">
 
-                    <div className="youtubeHero">
-                        {movieVideos ?
-                            <>
-                                <button onClick={() => { setMovieVideos('') }} className="btns txtHover" style={{marginBottom: '15px'}}>Close</button>
+                    {movieVideos ?
+                        <>
+                            <button
+                                className="btns txtHover"
+                                onClick={() => { setMovieVideos('') }}
+                                style={{ marginBottom: '15px' }}>
+                                Close
+                            </button>
+                            {renderTrailer()}
+                        </>
+                        :
+                        <>
+                            <h1 className="txtHover" style={{ color: "white", fontSize: "72px" }}>
+                                {heroMovie?.title}
+                            </h1>
 
-                                {renderTrailer()}
-                            </>
-                            : null}
-                    </div>
+                            <p className="txtHover" style={{ color: "white", width: '1000px' }}>
+                                {heroMovie?.overview ? heroMovie?.overview : null}
+                            </p>
 
-                    <h1 className="txtHover" style={{ color: "white", fontSize: "72px" }}>
-                        {heroMovie?.title}
-                    </h1>
-
-                    <p className="txtHover" style={{ color: "white", width: '1000px' }}>
-                        {heroMovie?.overview ? heroMovie?.overview : null}
-                    </p>
-
-                    <br />
-                    <button onClick={fetchMovieVideos} className="btns txtHover">Play Trailer</button>
-                    <br />
+                            <br />
+                            <button onClick={fetchMovieVideos} className="btns txtHover">Play Trailer</button>
+                            <br />
+                        </>}
 
                 </div>
             </div>
