@@ -52,25 +52,6 @@ export default function HomePage(props) {
     };
 
 
-    // useEffect(() => {
-    // for (let i = 0; i < upComingMovies?.length; i++) {
-
-    //     const HeroMovieTimer = (index) => {
-    //         if (index >= upComingMovies?.length) {
-    //             index = 0;
-    //         }
-
-    //         (setTimeout(() => {
-    //             setHeroMovie(upComingMovies?.[index]);
-    //             HeroMovieTimer(index + 1);
-    //             csonsole.log(index);
-    //         }, 3000))
-    //     }
-    //     HeroMovieTimer(0);
-    // }
-    // }, [])
-
-
 
     return (
         <div className="homePage flex">
@@ -116,10 +97,9 @@ export default function HomePage(props) {
                     <>
                         <h2 style={{ color: "white" }}>Upcoming Movies</h2>
                         <RenderMovies
-                            moviesToRender={upComingMovies?.slice(0, 8)}
+                            moviesToRender={upComingMovies?.slice(0, 16)}
                         />
                     </>
-
                 ) : (
                     <>
                         <h2 style={{ color: "white" }}>Movies Found</h2>

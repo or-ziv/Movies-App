@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AllData = createContext();
 
@@ -39,18 +40,9 @@ export const DataProvider = ({ children }) => {
     });
 
     // Keeps the user logged in even after closing the browser
-    const [currentUser, setCurrentUser] = useState(() => {
-        let currentUserFromStorage = localStorage.getItem('currentUser');
-        if (currentUserFromStorage !== null && currentUserFromStorage !== undefined) {
-            try {
-                return JSON.parse(currentUserFromStorage);
-            } catch (error) {
-                console.error("Error parsing currentUserFromStorage:", error);
-                return {};
-            }
-        }
-        return {};
-    });
+    const initialUser = JSON.parse(localStorage.getItem('currentUser')) || {};
+    const [currentUser, setCurrentUser] = useState(initialUser);
+
 
     // User can log out, updating the states and local storage
     const logOut = () => {
@@ -67,6 +59,68 @@ export const DataProvider = ({ children }) => {
     }, [users]);
 
 
+    // Add a movie to favorites
+    const [favorite, setFavorite] = useState({});
+
+    const addToFavorite = (movie) => {
+        if (Object.keys(currentUser).length !== 0) {
+            if (!currentUser.favorites.includes(movie)) {
+                const updatedFavorites = [movie, ...currentUser.favorites];
+                setCurrentUser((prevState) => ({
+                    ...prevState,
+                    favorites: updatedFavorites
+                }));
+                setFavorite(movie);
+                alert('Movie Added To Favorites!')
+            } else {
+                alert('This Movie Is Already In Your Favorites...');
+            }
+        } else {
+            alert('Please Login To Add A Movie To Your Favorites!');
+        }
+    };
+
+    useEffect(() => {
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+        setUsers((prevUsers) =>
+            prevUsers.map((user) =>
+                user.email === currentUser.email
+                    ? { ...user, favorites: currentUser.favorites }
+                    : user
+            )
+        );
+    }, [favorite, currentUser])
+
+
+    // Remove a Movie From Favorites
+
+    const removeMovieFromFavorites = (movie) => {
+        const updatedFavorites = currentUser.favorites.filter((val) => (val.id !== movie.id))
+        setCurrentUser((prevState) => ({
+            ...prevState,
+            favorites: [...updatedFavorites]
+        }));
+    }
+
+    useEffect(() => {
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+        let usersFromStorage = JSON.parse(localStorage.getItem('users')) || [];
+        const updatedUsers = usersFromStorage.map((user) => {
+            if (user.email === currentUser.email) {
+                return { ...user, ...currentUser };
+            }
+            return user;
+        });
+
+        localStorage.setItem('users', JSON.stringify(updatedUsers));
+
+    }, [currentUser]);
+
+
+
+
     return (
         <AllData.Provider
             value={{
@@ -77,7 +131,9 @@ export const DataProvider = ({ children }) => {
                 navbarFlag, setNavbarFlag,
                 logOut,
                 currentUser, setCurrentUser,
-                movieVideos, setMovieVideos
+                movieVideos, setMovieVideos,
+                addToFavorite, removeMovieFromFavorites,
+                currentUser
             }}>
             {children}
         </AllData.Provider>

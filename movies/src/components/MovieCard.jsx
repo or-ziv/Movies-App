@@ -5,7 +5,7 @@ import AllData from "../ContextApi";
 
 
 export default function MovieCard({ movie }) {
-    const { setSelectedMovie } = useContext(AllData);
+    const { setSelectedMovie, addToFavorite } = useContext(AllData);
 
     const [isHovering, setIsHovering] = useState(false);
 
@@ -32,7 +32,7 @@ export default function MovieCard({ movie }) {
                         <Link to={'/details'}>
                             <button onClick={() => { setSelectedMovie(movie) }} className="btns cardBtn btnAnimation">More Details</button>
                         </Link>
-                        <button className="btn cardBtn btnAnimation">Add To Favorite</button>
+                        <button onClick={() => { addToFavorite(movie) }} className="btns cardBtn btnAnimation">Add To Favorite</button>
                     </div>
                 ) : (
                     <>
