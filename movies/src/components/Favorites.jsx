@@ -19,6 +19,7 @@ export default function Favorites() {
     };
 
 
+
     return (
         <div>
 
@@ -27,9 +28,10 @@ export default function Favorites() {
                 {currentUser?.favorites?.map((movie) => {
                     return (
                         <div className="movieCard flex">
-
                             <h3 className="movieTitle" >{movie?.title}</h3>
-                            <div className="movieDisplay" key={movie?.id}
+
+                            <div className="movieDisplay"
+                                key={movie?.id}
                                 onMouseOver={handleMouseOver}
                                 onMouseOut={handleMouseOut}
                                 style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${movie.poster_path})` }}>
@@ -47,6 +49,7 @@ export default function Favorites() {
                                 )}
 
                             </div>
+
                             <div className="movieDisplay flex" style={{ flexDirection: 'row', height: '15px', borderTop: 'none' }}>
                                 <h3 style={{ marginLeft: '15px' }}>{movie?.vote_average}</h3>
                                 <img src={starIcon} alt="starIcon" style={{ width: '20px', border: 'none', marginLeft: '10px' }} />

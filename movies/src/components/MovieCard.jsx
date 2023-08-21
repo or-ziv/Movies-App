@@ -35,8 +35,7 @@ export default function MovieCard({ movie }) {
                         <button onClick={() => { addToFavorite(movie) }} className="btns cardBtn btnAnimation">Add To Favorite</button>
                     </div>
                 ) : (
-                    <>
-                    </>
+                    null
                 )}
 
             </div>
