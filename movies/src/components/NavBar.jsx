@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import AllData from "../ContextApi";
 
 export default function NavBar(props) {
-    const { navbarFlag, logOut } = useContext(AllData);
+    const { navbarFlag, logOut, setMovieVideos } = useContext(AllData);
     const nav = useNavigate();
 
     const [btnBG, setBtnBG] = useState(0);
@@ -28,7 +28,7 @@ export default function NavBar(props) {
             <div>
                 <Link to={'/'}>
                     <button
-                        onClick={() => { handleClick(0) }}
+                        onClick={() => { handleClick(0); setMovieVideos(undefined) }}
                         className={`btnsNavbar btnAnimation ${isButtonActive(0)}`}>
                         Home
                     </button>
