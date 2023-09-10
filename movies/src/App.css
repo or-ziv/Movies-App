@@ -292,7 +292,7 @@ p {
   width: 350px;
   cursor: pointer;
 
-  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.383) -6px -2px 16px 0px;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.048) -6px -2px 16px 0px;
 
   border: 5px solid #373c44;
   border-radius: 10px;
