@@ -198,6 +198,11 @@ p {
   gap: 50px;
 }
 
+.txtOverView {
+  color: white;
+  width: 1000px;
+}
+
 
 
 /* ______________________________________________________________________________ */
@@ -310,6 +315,11 @@ p {
   width: 95%;
 }
 
+.detailsCont {
+  gap: 100px;
+  flex-direction: row;
+}
+
 .imgForTrailer {
 
   height: 350px;
@@ -404,7 +414,6 @@ p {
   background-color: #373c44;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   border-radius: 15px;
-  /* border: 3px solid rgba(0, 0, 0, 0.611); */
   width: 850px;
   height: auto;
 }
@@ -425,3 +434,94 @@ p {
 }
 
 /* ______________________________________________________________________________ */
+
+
+
+
+
+
+
+
+
+
+/* MOBILE STYLE */
+
+@media(max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* ______________________________________________________________________________ */
+
+  /* Home Page + Top Rated Style Mobile */
+  .upComing,
+  .topRatedMap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-flow: row;
+    gap: 25px;
+  }
+
+  .movieDisplay {
+    height: 500px;
+    width: 300px;
+    cursor: pointer;
+    margin-left: 3%;
+  }
+
+  .hero {
+    margin-top: 15%;
+  }
+
+  .txtOverView {
+    width: 700px;
+  }
+
+  /* ______________________________________________________________________________ */
+
+  /* Navbar Style Mobile */
+  .navbar {
+    width: 768px;
+  }
+
+  .btnsNavbar {
+    font-size: 15px;
+    width: 75px;
+  }
+
+  .btnsDivNavbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .inputs {
+    width: 300px;
+  }
+
+  /* ______________________________________________________________________________ */
+
+  /* Movie Details Mobile */
+  .detailsCont {
+    flex-direction: column;
+    width: 750px;
+  }
+
+  .moviesReview {
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-flow: row;
+    gap: 25px;
+  }
+
+  .reviewDisplay {
+    width: 80%;
+    margin-left: 6%;
+  }
+
+ 
+
+  /* ______________________________________________________________________________ */
+
+}

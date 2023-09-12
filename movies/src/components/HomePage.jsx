@@ -79,7 +79,7 @@ export default function HomePage(props) {
                                 {heroMovie?.title}
                             </h1>
 
-                            <p className="txtHover" style={{ color: "white", width: '1000px' }}>
+                            <p className="txtHover txtOverView" >
                                 {heroMovie?.overview ? heroMovie?.overview : null}
                             </p>
 
@@ -92,7 +92,7 @@ export default function HomePage(props) {
             </div>
 
 
-            <div className="upComingMoviesDiv">
+            <div>
                 {props.searchedMovies.length === 0 ? (
                     <>
                         <h2 style={{ color: "white" }}>Upcoming Movies</h2>

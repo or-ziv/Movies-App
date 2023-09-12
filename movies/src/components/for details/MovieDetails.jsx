@@ -57,9 +57,9 @@ export default function MovieDetails() {
             <br />
             <h1 style={{ color: 'white' }}>{thisMovie?.title}</h1>
 
-            <div className="flex details" style={{ flexDirection: 'row', gap: ' 100px' }}>
+            <div className="flex details detailsCont" >
 
-                <div className="flex" style={{ flexDirection: 'row', gap: '100px' }}>
+                <div className="flex detailsCont" >
                     <div className="flex">
                         {/* Display The movie image */}
                         <img className="imgDisplayDetails" style={{ cursor: 'default' }}
@@ -93,8 +93,6 @@ export default function MovieDetails() {
                     <p style={{ width: '600px', color: 'white', textAlign: 'left', lineHeight: '35px' }}>{thisMovie?.overview}</p>
                     <h3>Release Date: {thisMovie?.release_date}</h3>
                 </div>
-
-
             </div>
 
 

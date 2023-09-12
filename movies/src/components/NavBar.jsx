@@ -25,7 +25,7 @@ export default function NavBar(props) {
 
     return (
         <div className="navbar flex">
-            <div>
+            <div className="btnsDivNavbar">
                 <Link to={'/'}>
                     <button
                         onClick={() => { handleClick(0); setMovieVideos(undefined) }}
@@ -55,7 +55,7 @@ export default function NavBar(props) {
 
             <div>
                 {!navbarFlag ? (
-                    <>
+                    <div className="btnsDivNavbar">
                         <Link to={'/signin'}>
                             <button
                                 onClick={() => { handleClick(2) }}
@@ -71,16 +71,15 @@ export default function NavBar(props) {
                                 Sign Up
                             </button>
                         </Link>
-                    </>
+                    </div>
                 ) : (
-                    <>
-                        <Link to={`/favorites`}>
-                            <button
-                                onClick={() => { handleClick(4) }}
-                                className={`btnsNavbar btnAnimation ${isButtonActive(4)}`}>
-                                Favorites
-                            </button>
-                        </Link>
+                    <div className="btnsDivNavbar">                        <Link to={`/favorites`}>
+                        <button
+                            onClick={() => { handleClick(4) }}
+                            className={`btnsNavbar btnAnimation ${isButtonActive(4)}`}>
+                            Favorites
+                        </button>
+                    </Link>
 
                         <Link to={'/'}>
                             <button
@@ -89,7 +88,7 @@ export default function NavBar(props) {
                                 Log Out
                             </button>
                         </Link>
-                    </>
+                    </div>
                 )}
             </div>
 
