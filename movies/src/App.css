@@ -373,7 +373,12 @@ p {
   height: 100px;
   border-radius: 50px;
   object-fit: contain;
+}
 
+.defaultPic {
+  width: 100px;
+  height: 75px;
+  object-fit: contain;
 }
 
 .secondConatinerDetails {
@@ -381,7 +386,6 @@ p {
   grid-template-columns: repeat(2, 1fr);
   grid-auto-flow: row;
   gap: 50px;
-
 }
 
 .actorDisplay {
@@ -511,7 +515,6 @@ p {
 
   .moviesReview {
     grid-template-columns: repeat(1, 1fr);
-    grid-auto-flow: row;
     gap: 25px;
   }
 
@@ -520,7 +523,13 @@ p {
     margin-left: 6%;
   }
 
- 
+  .details {
+    width: 650px;
+  }
+
+  .secondConatinerDetails {
+    grid-template-columns: repeat(1, 1fr);
+  }
 
   /* ______________________________________________________________________________ */
 

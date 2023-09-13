@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import defaultProfilePic from '../../icons/defaultProfilePic.jpg'
 
 export default function CrewMembers(props) {
 
@@ -30,17 +31,20 @@ export default function CrewMembers(props) {
 
     return (
         <div className="actorsDiv" style={{ height: '600px ' }}>
-            {/* <h1 style={{ color: 'white' }}>Top Cast</h1> */}
             {crew?.map((val) => {
                 return (
-                    <div key={val.id} className="flex actorDisplay" style={{ flexDirection: 'row' }}>
-                        <img className="ActorImg" src={`https://image.tmdb.org/t/p/w500${val.profile_path}`} alt={`${val.name} - img`} />
+                    <div key={val.id} className="flex actorDisplay" style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+
+                        <img
+                            className={val.profile_path ? 'ActorImg' : 'defaultPic'}
+                            src={val.profile_path ? `https://image.tmdb.org/t/p/w500${val.profile_path}` : defaultProfilePic}
+                            alt="Profile Pic"
+                        />
 
                         <div className="flex" >
                             <h3>{val.name}</h3>
                             <p>{val.job}</p>
                         </div>
-
                     </div>
                 )
             })}

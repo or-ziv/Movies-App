@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import defaultProfilePic from '../../icons/defaultProfilePic.jpg'
+
 
 export default function Actors(props) {
 
@@ -36,8 +38,12 @@ export default function Actors(props) {
             <br />
             {actors?.map((val) => {
                 return (
-                    <div key={val.id} className="flex actorDisplay" style={{ flexDirection: 'row' }}>
-                        <img className="ActorImg" src={`https://image.tmdb.org/t/p/w500${val.profile_path}`} alt={`${val.name}`} />
+                    <div key={val.id} className="flex actorDisplay" style={{ flexDirection: 'row',justifyContent:'space-between' }}>
+
+                        <img
+                            className={val.profile_path ? 'ActorImg' : 'defaultPic'}
+                            src={val.profile_path ? `https://image.tmdb.org/t/p/w500${val.profile_path}` : defaultProfilePic}
+                        />
 
                         <div className="flex" >
                             <h3>{val.name}</h3>
