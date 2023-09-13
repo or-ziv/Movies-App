@@ -378,6 +378,7 @@ p {
 .defaultPic {
   width: 100px;
   height: 75px;
+  border-radius: 50px;
   object-fit: contain;
 }
 

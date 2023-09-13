@@ -5,7 +5,6 @@ import { moviesApi } from './features/apiSlice';
 import { useEffect, useState, useContext } from 'react';
 import AllData, { DataProvider } from './ContextApi';
 
-
 import NavBar from './components/NavBar';
 import HomePage from './components/HomePage';
 import TopRatedMovies from './components/TopRatedMovies';
