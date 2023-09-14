@@ -82,8 +82,7 @@ export default function MovieDetails() {
                     <div className="youtubeCont">
                         {movieVideos ? renderTrailer() : 'No Trailers Avaliable'}
                     </div>
-
-
+                    
                 </div>
 
                 {/* Display the movie overview and release date  */}

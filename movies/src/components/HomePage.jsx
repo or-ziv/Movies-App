@@ -5,9 +5,9 @@ import Youtube from 'react-youtube';
 import RenderMovies from "./RenderMovies";
 
 export default function HomePage(props) {
+
     const { data } = useGetUpComingMoviesQuery();
     const upComingMovies = data?.results;
-
     const { heroMovie, setHeroMovie, movieVideos, setMovieVideos } = useContext(AllData);
 
     useEffect(() => {

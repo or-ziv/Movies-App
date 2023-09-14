@@ -12,7 +12,6 @@ export default function SimilarMovies(props) {
     const moviesPerPage = 4;
 
 
-
     const fetchSimilarMovies = () => {
         const API_URL = 'https://api.themoviedb.org/3/movie/';
         let id = props.movieId;
@@ -46,10 +45,6 @@ export default function SimilarMovies(props) {
             setStartIndex(Math.min(similarMovies?.length - moviesPerPage, startIndex + 1));
         }
     };
-
-
-
-
 
 
     return (
