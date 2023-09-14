@@ -9,14 +9,13 @@ export default function NavBar(props) {
     const { setMovieVideos } = useContext(AllData);
     const nav = useNavigate();
 
-    const [btnBG, setBtnBG] = useState(0);
 
     const handleClick = (index) => {
-        setBtnBG(index);
+        props.setBtnBG(index);
     }
 
     const isButtonActive = (index) => {
-        return btnBG === index ? 'activeBtn' : '';
+        return props.btnBG === index ? 'activeBtn' : '';
     }
 
     const handleSubmit = (e) => {

@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import UserData from "../UserContextApi";
 import { useNavigate } from "react-router-dom";
 
-export default function SignIn() {
+export default function SignIn(props) {
     const { users, setNavbarFlag, setCurrentUser } = useContext(UserData);
 
     const nav = useNavigate();
@@ -32,6 +32,7 @@ export default function SignIn() {
         setNavbarFlag(true);
         localStorage.setItem('isLoggedIn', JSON.stringify(true));
         localStorage.setItem('currentUser', JSON.stringify(thisUser));
+        props.setBtnBG(0);
         nav('/');
     }
 

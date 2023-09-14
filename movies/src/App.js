@@ -20,6 +20,9 @@ function App() {
 
   const { setSelectedMovie } = useContext(AllData);
 
+  // handles the bg of each navbar btn 
+  const [btnBG, setBtnBG] = useState(0);
+
 
   // This is to show some of the movies
   const fetchMovies = (searchKey) => {
@@ -77,6 +80,8 @@ function App() {
               searchMovies={searchMovies}
               searchKey={searchKey}
               setSearchedMovies={setSearchedMovies}
+              btnBG={btnBG}
+              setBtnBG={setBtnBG}
             />
             < Routes >
 
@@ -84,8 +89,8 @@ function App() {
               <Route path='/toprated' element={<TopRatedMovies />} />
               <Route path='/popularMovies' element={<PopularMovies />} />
 
-              <Route path='/signin' element={<SignIn />} />
-              <Route path='/signup' element={<SignUp />} />
+              <Route path='/signin' element={<SignIn setBtnBG={setBtnBG} />} />
+              <Route path='/signup' element={<SignUp setBtnBG={setBtnBG} />} />
               <Route path='/favorites' element={<Favorites />} />
 
               <Route path='/details' element={<MovieDetails />} />

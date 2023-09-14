@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import UserData from "../UserContextApi";
 import { useNavigate } from "react-router-dom";
 
-export default function SignUp() {
+export default function SignUp(props) {
 
     const { register } = useContext(UserData);
 
@@ -55,8 +55,6 @@ export default function SignUp() {
     }
 
 
-
-
     return (
 
 
@@ -87,7 +85,7 @@ export default function SignUp() {
                 <button onClick={handleSignUp} className="btns margin btnAnimation btnsNavbar signBtn" style={{ width: '150px' }}>Sign Up</button>
 
                 <br />
-                <p onClick={() => { nav('/signin') }} style={{ cursor: 'pointer' }}>Already Have an Account? Click Here</p>
+                <p onClick={() => { nav('/signin'); props.setBtnBG(2) }} style={{ cursor: 'pointer' }}>Already Have an Account? Click Here</p>
 
 
             </div>
