@@ -14,7 +14,7 @@ export default function CrewMembers(props) {
         fetch(url)
             .then(res => res.json())
             .then((data) => {
-                setCrew(data?.crew?.slice(0, 6));
+                setCrew(data?.crew?.slice(0, 7));
             })
             .catch((err) => {
                 console.log(err);
@@ -30,7 +30,7 @@ export default function CrewMembers(props) {
 
 
     return (
-        <div className="actorsDiv" style={{ height: '600px ' }}>
+        <div className="actorsDiv" >
             {crew?.map((val) => {
                 return (
                     <div key={val.id} className="flex actorDisplay" style={{ flexDirection: 'row', justifyContent: 'space-between' }}>

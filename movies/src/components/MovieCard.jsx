@@ -41,7 +41,7 @@ export default function MovieCard({ movie }) {
             </div>
 
             <div className="movieDisplay flex" style={{ flexDirection: 'row', height: '15px', borderTop: 'none' }}>
-                <h3 style={{ marginLeft: '15px' }}>{movie?.vote_average}</h3>
+                <h3 style={{ marginLeft: '15px' }}>{movie?.vote_average.toString().slice(0, 3)}</h3>
                 <img src={starIcon} alt="starIcon" style={{ width: '20px', border: 'none', marginLeft: '10px' }} />
             </div>
 

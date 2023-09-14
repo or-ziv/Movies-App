@@ -380,6 +380,7 @@ p {
   height: 75px;
   border-radius: 50px;
   object-fit: contain;
+  margin-left: 5px;
 }
 
 .secondConatinerDetails {
