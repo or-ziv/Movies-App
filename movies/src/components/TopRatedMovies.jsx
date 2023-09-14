@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import AllData from "../ContextApi";
+import AllData from "../MoviesContextApi";
 import { useGetTopRatedMoviesQuery, useGetTopRatedMoviesPage2Query } from '../features/apiSlice'
 import RenderMovies from "./RenderMovies";
 

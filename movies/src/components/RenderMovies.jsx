@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import AllData from "../ContextApi";
+import AllData from "../MoviesContextApi";
 import MovieCard from "./MovieCard";
 
 export default function RenderMovies(props) {

@@ -21,12 +21,9 @@ export default function CrewMembers(props) {
             });
     };
 
-
-
     useEffect(() => {
         fetchActors();
     }, [props.movieId])
-
 
 
     return (

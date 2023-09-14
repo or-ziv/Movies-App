@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 export default function MoviesReviews(props) {
 
     const [reviews, setReviews] = useState(['No Reviews']);
-    const [classFlag, setClassFlag] = useState('moviesReview');
+    const [classNameFlag, setClassNameFlag] = useState('moviesReview');
 
     const fetchReviews = () => {
         const API_URL = 'https://api.themoviedb.org/3/movie/';
@@ -29,9 +29,9 @@ export default function MoviesReviews(props) {
     useEffect(() => {
 
         if (reviews?.length <= 1) {
-            setClassFlag('flex')
+            setClassNameFlag('flex')
         } else {
-            setClassFlag('moviesReview')
+            setClassNameFlag('moviesReview')
         }
 
     }, [reviews])
@@ -40,7 +40,7 @@ export default function MoviesReviews(props) {
 
 
     return (
-        <div className={classFlag}>
+        <div className={classNameFlag}>
             {reviews?.length === 0 ? (
                 <h3>No reviews available.</h3>
             ) : (

@@ -1,12 +1,14 @@
+import starIcon from '../icons/starIcon.png'
 import React from "react";
 import { useContext } from "react";
-import AllData from "../ContextApi";
 import { Link } from "react-router-dom";
-import starIcon from '../icons/starIcon.png'
+import AllData from "../MoviesContextApi";
+import UserData from "../UserContextApi";
 
 export default function Favorites() {
 
-    const { currentUser, setSelectedMovie, removeMovieFromFavorites } = useContext(AllData);
+    const { currentUser, removeMovieFromFavorites } = useContext(UserData);
+    const { setSelectedMovie } = useContext(AllData);
 
     return (
         <div>

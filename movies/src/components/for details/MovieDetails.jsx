@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
-import AllData from "../../ContextApi";
+import AllData from "../../MoviesContextApi";
 import Actors from "./Actors";
 import CrewMembers from "./CrewMembers";
 import MoviesReviews from "./MoviesReviews";
 import SimilarMovies from "./SimilarMovies";
 import Youtube from 'react-youtube';
-import MovieImages from "./MovieImages";
 
 
 export default function MovieDetails() {

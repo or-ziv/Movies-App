@@ -7,8 +7,6 @@ export default function Actors(props) {
     const [actors, setActors] = useState([]);
     const [crew, setCrew] = useState([]);
 
-
-
     const fetchActors = () => {
         const API_URL = 'https://api.themoviedb.org/3/movie/';
         let id = props.movieId;
@@ -25,7 +23,6 @@ export default function Actors(props) {
                 console.log(err);
             });
     };
-
 
 
     useEffect(() => {

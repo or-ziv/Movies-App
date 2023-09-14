@@ -3,15 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { DataProvider } from './ContextApi';
+import { DataProvider as MoviesProvider } from './MoviesContextApi';
+import { DataProvider as UserProvider } from './UserContextApi';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <DataProvider>
-      <App />
-    </DataProvider>
+    <MoviesProvider>
+      <UserProvider>
+        <App />
+      </UserProvider>
+    </MoviesProvider>
   </React.StrictMode>
 );
 

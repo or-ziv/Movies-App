@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import AllData from "../ContextApi";
+import AllData from "../MoviesContextApi";
+import UserData from "../UserContextApi";
 
 export default function NavBar(props) {
-    const { navbarFlag, logOut, setMovieVideos } = useContext(AllData);
+    const { navbarFlag, logOut } = useContext(UserData);
+    const { setMovieVideos } = useContext(AllData);
     const nav = useNavigate();
 
     const [btnBG, setBtnBG] = useState(0);

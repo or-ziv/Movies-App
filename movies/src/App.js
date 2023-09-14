@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ApiProvider } from '@reduxjs/toolkit/query/react';
 import { moviesApi } from './features/apiSlice';
 import { useEffect, useState, useContext } from 'react';
-import AllData, { DataProvider } from './ContextApi';
+import AllData, { DataProvider } from './MoviesContextApi';
 
 import NavBar from './components/NavBar';
 import HomePage from './components/HomePage';

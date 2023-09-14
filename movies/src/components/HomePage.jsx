@@ -1,6 +1,6 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import { useGetUpComingMoviesQuery } from "../features/apiSlice";
-import AllData from "../ContextApi";
+import AllData from "../MoviesContextApi";
 import Youtube from 'react-youtube';
 import RenderMovies from "./RenderMovies";
 
@@ -8,7 +8,7 @@ export default function HomePage(props) {
     const { data } = useGetUpComingMoviesQuery();
     const upComingMovies = data?.results;
 
-    const { heroMovie, setHeroMovie, setMovieVideos, movieVideos } = useContext(AllData);
+    const { heroMovie, setHeroMovie, movieVideos, setMovieVideos } = useContext(AllData);
 
     useEffect(() => {
         setHeroMovie(upComingMovies?.[0]);

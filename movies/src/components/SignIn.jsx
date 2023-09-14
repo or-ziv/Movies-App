@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
-import AllData from "../ContextApi";
+import UserData from "../UserContextApi";
 import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
-    const { users, setNavbarFlag, setCurrentUser } = useContext(AllData);
+    const { users, setNavbarFlag, setCurrentUser } = useContext(UserData);
 
     const nav = useNavigate();
     const allUsers = users;

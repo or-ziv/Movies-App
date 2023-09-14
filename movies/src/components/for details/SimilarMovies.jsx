@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import rightArrow from '../../icons/rightArrow.png'
 import leftArrow from '../../icons/leftArrow.png'
 import RenderMovies from "../RenderMovies";
-import AllData from "../../ContextApi";
+import AllData from "../../MoviesContextApi";
 
 export default function SimilarMovies(props) {
 

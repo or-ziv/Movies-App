@@ -1,18 +1,8 @@
 import { createContext, useState, useEffect } from "react";
 
-const AllData = createContext();
+const UserData = createContext();
 
 export const DataProvider = ({ children }) => {
-
-    //For Showing The Main Movie In The Website 
-    const [heroMovie, setHeroMovie] = useState({});
-
-    // To Select A Movie
-    const [selectedMovie, setSelectedMovie] = useState({});
-
-    // Getting the videos for each movie
-    const [movieVideos, setMovieVideos] = useState('');
-
 
     // Catch users from the localStorage so the array won't reset
     const [users, setUsers] = useState(() => {
@@ -92,8 +82,8 @@ export const DataProvider = ({ children }) => {
     }, [favorite, currentUser])
 
 
-    // Remove a Movie From Favorites
 
+    // Remove a Movie From Favorites
     const removeMovieFromFavorites = (movie) => {
         const updatedFavorites = currentUser.favorites.filter((val) => (val.id !== movie.id))
         setCurrentUser((prevState) => ({
@@ -121,23 +111,18 @@ export const DataProvider = ({ children }) => {
 
 
     return (
-        <AllData.Provider
+        <UserData.Provider
             value={{
-                heroMovie, setHeroMovie,
-                selectedMovie, setSelectedMovie,
                 users, setUsers,
-                register,
+                register, logOut,
                 navbarFlag, setNavbarFlag,
-                logOut,
                 currentUser, setCurrentUser,
-                movieVideos, setMovieVideos,
                 addToFavorite, removeMovieFromFavorites,
-                currentUser
             }}>
             {children}
-        </AllData.Provider>
+        </UserData.Provider>
     )
 }
 
 
-export default AllData;
+export default UserData;

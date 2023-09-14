@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
-import AllData from "../ContextApi";
+import UserData from "../UserContextApi";
 import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
 
-    const { register } = useContext(AllData);
+    const { register } = useContext(UserData);
 
     const nav = useNavigate();
 
