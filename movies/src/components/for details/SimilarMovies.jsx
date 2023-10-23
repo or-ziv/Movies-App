@@ -6,8 +6,8 @@ import AllData from "../../MoviesContextApi";
 
 export default function SimilarMovies(props) {
 
-    const [similarMovies, setSimilarMovies] = useState([])
     const { selectedMovie } = useContext(AllData);
+    const [similarMovies, setSimilarMovies] = useState([])
     const [startIndex, setStartIndex] = useState(0);
     const moviesPerPage = 4;
 
