@@ -18,7 +18,7 @@ export default function MovieDetails() {
     const fetchMovieDetails = () => {
         const API_URL = 'https://api.themoviedb.org/3/movie/';
         let id = movieId;
-        const apiKey = '4a8e3679e70d606a9981baa4c0311d38';
+        const apiKey = process.env.REACT_APP_API_KEY;
         const getVideos = 'append_to_response=videos'
         let url = `${API_URL}/${id}?language=en-US&page=1&api_key=${apiKey}&${getVideos}`;
 

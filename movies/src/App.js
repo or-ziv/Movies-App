@@ -15,7 +15,6 @@ import MovieDetails from './components/for details/MovieDetails';
 import Actors from './components/for details/Actors';
 import PopularMovies from './components/PopularMovies';
 
-
 function App() {
 
   const { setSelectedMovie } = useContext(AllData);
@@ -28,7 +27,7 @@ function App() {
   const fetchMovies = (searchKey) => {
     const API_URL = 'https://api.themoviedb.org/3';
     const type = searchKey ? 'search/movie' : 'movie/now_playing';
-    const apiKey = '4a8e3679e70d606a9981baa4c0311d38';
+    const apiKey = process.env.REACT_APP_API_KEY;
     let url = `${API_URL}/${type}?language=en-US&page=1&api_key=${apiKey}`;
 
     if (searchKey) {
